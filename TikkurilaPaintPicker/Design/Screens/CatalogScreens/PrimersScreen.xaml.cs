@@ -3,7 +3,7 @@ using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 
 namespace TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 
-public partial class WaterBornPaints : ContentPage
+public partial class PrimersScreen : ContentPage
 {
     Grid grid = new Grid
     {
@@ -12,14 +12,16 @@ public partial class WaterBornPaints : ContentPage
         RowSpacing = 10,
     };
 
-    public WaterBornPaints()
-	{
-		InitializeComponent();
+    public PrimersScreen()
+    {
+        InitializeComponent();
 
-        Title = "Водоэмульсионные краски";
+        Title = "Грунтовки";
 
-        AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/WaterPaints/for_dry_rooms.png", text: "Для сухих помещений", page: new PaintListScreen());
-        AddToGrid(column: 0, row: 1, image: "Images/CategoriesImages/WaterPaints/for_wet_rooms.png", text: "Для влажных помещений", page: new PaintListScreen());
+        AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/Primers/wood.png", text: "Для дерева", page: new PaintListScreen());
+        AddToGrid(column: 0, row: 1, image: "Images/CategoriesImages/Primers/metal.png", text: "Для металла", page: new PaintListScreen());
+        AddToGrid(column: 0, row: 2, image: "Images/CategoriesImages/Primers/mineral.png", text: "Для минеральных поверхностей", page: new PaintListScreen());
+        AddToGrid(column: 0, row: 3, image: "Images/CategoriesImages/Primers/plast.png", text: "Для пластика", page: new PaintListScreen());
 
         Content = grid;
     }

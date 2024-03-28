@@ -1,4 +1,5 @@
 using TikkurilaPaintPicker.Design.Font;
+using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 
 namespace TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 
@@ -18,14 +19,14 @@ public partial class CatalogScreen : ContentPage
 
         Title = "Каталог";
 
-        AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/water_paints.jpg", text: "Водоэмульсионные краски", page: new WaterBornPaints());
-        AddToGrid(column: 1, row: 0, image: "Images/CategoriesImages/exterier_paint.jpg", text: "Фасадные краски", page: new WaterBornPaints());
-        AddToGrid(column: 0, row: 1, image: "Images/CategoriesImages/septik.jpg", text: "Пропитки для дерева", page: new WaterBornPaints());
-        AddToGrid(column: 1, row: 1, image: "Images/CategoriesImages/lackuer.jpg", text: "Лаки", page: new WaterBornPaints());
-        AddToGrid(column: 0, row: 2, image: "Images/CategoriesImages/primers.jpg", text: "Грунтовки", page: new WaterBornPaints());
-        AddToGrid(column: 1, row: 2, image: "Images/CategoriesImages/maailn.jpg", text: "Эмали", page: new WaterBornPaints());
-        AddToGrid(column: 0, row: 3, image: "Images/CategoriesImages/thinners.jpg", text: "Растворители", page: new WaterBornPaints());
-        AddToGrid(column: 1, row: 3, image: "Images/CategoriesImages/wash_products.jpg", text: "Моющие средства и добавки", page: new WaterBornPaints());
+        AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/water_paints.png", text: "Водоэмульсионные краски", page: new WaterBornPaints());
+        AddToGrid(column: 1, row: 0, image: "Images/CategoriesImages/exterier_paint.png", text: "Фасадные краски", page: new FasadePaintsScreen());
+        AddToGrid(column: 0, row: 1, image: "Images/CategoriesImages/septik.png", text: "Пропитки для дерева", page: new WoodOilsScreen());
+        AddToGrid(column: 1, row: 1, image: "Images/CategoriesImages/lackuer.png", text: "Лаки", page: new LackuersScreens());
+        AddToGrid(column: 0, row: 2, image: "Images/CategoriesImages/primers.png", text: "Грунтовки", page: new PrimersScreen());
+        AddToGrid(column: 1, row: 2, image: "Images/CategoriesImages/maailn.png", text: "Эмали", page: new WaterBornPaints());
+        AddToGrid(column: 0, row: 3, image: "Images/CategoriesImages/thinners.png", text: "Растворители", page: new PaintListScreen());
+        AddToGrid(column: 1, row: 3, image: "Images/CategoriesImages/wash_products.png", text: "Моющие средства и добавки", page: new PaintListScreen());
 
         Content = grid;
     }

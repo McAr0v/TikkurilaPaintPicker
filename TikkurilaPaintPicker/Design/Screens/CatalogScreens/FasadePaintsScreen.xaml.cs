@@ -3,7 +3,7 @@ using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 
 namespace TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 
-public partial class WaterBornPaints : ContentPage
+public partial class FasadePaintsScreen : ContentPage
 {
     Grid grid = new Grid
     {
@@ -12,14 +12,14 @@ public partial class WaterBornPaints : ContentPage
         RowSpacing = 10,
     };
 
-    public WaterBornPaints()
-	{
-		InitializeComponent();
+    public FasadePaintsScreen()
+    {
+        InitializeComponent();
 
-        Title = "Водоэмульсионные краски";
+        Title = "Фасадные краски";
 
-        AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/WaterPaints/for_dry_rooms.png", text: "Для сухих помещений", page: new PaintListScreen());
-        AddToGrid(column: 0, row: 1, image: "Images/CategoriesImages/WaterPaints/for_wet_rooms.png", text: "Для влажных помещений", page: new PaintListScreen());
+        AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/FassadePaints/wooden_fassade.png", text: "Для деревянных поверхностей", page: new PaintListScreen());
+        AddToGrid(column: 0, row: 1, image: "Images/CategoriesImages/FassadePaints/mineral_fassade.png", text: "Для минеральных поверхностей", page: new PaintListScreen());
 
         Content = grid;
     }

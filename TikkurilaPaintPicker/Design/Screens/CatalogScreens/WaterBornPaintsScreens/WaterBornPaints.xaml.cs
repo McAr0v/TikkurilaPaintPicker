@@ -1,3 +1,4 @@
+using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 
@@ -29,7 +30,7 @@ public partial class WaterBornPaints : ContentPage
 
         Label label = CutomTextWidget.CustomText(
             text: text,
-            textColor: Colors.White,
+            textColor: CustomColors.White,
             textState: TextState.BodySmall,
             horizontalAligment: TextAlignment.Start
             );
@@ -50,7 +51,7 @@ public partial class WaterBornPaints : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Colors.Black,
+            Color = CustomColors.Black,
         }, column, row);
 
         grid.Add(new Image

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TikkurilaPaintPicker.Paint.Enums;
 
 namespace TikkurilaPaintPicker.Paint.PaintLists
 {
@@ -41,6 +42,27 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
         {
             return allPaints;
         }
+
+        public List<PaintClass> GetPaintsInCategory(CategoryEnums category) 
+        {
+            List<PaintClass> tempList = new List<PaintClass>();
+
+            foreach(PaintClass paintClass in allPaints) 
+            {
+                foreach (CategoryEnums categoryEnum in paintClass.Categories) 
+                {
+                    if (categoryEnum == category) 
+                    {
+                        tempList.Add(paintClass); 
+                        break;
+                    }
+                }
+            }
+
+            return tempList;
+        }
+
+
 
     }
 }

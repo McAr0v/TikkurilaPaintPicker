@@ -18,6 +18,7 @@ namespace TikkurilaPaintPicker.Paint
         public PaintThinnerEnum Thinner { get; set; }
         public List<PaintColorEnum> Colors {  get; set; }
         public List<PaintGlossEnum> Gloss { get; set; }
+        public List<CategoryEnums> Categories { get; set; }
 
 
     }

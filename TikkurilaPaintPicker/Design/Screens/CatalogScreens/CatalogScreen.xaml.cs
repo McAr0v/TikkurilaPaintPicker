@@ -1,5 +1,7 @@
+using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
+using TikkurilaPaintPicker.Paint.Enums;
 
 namespace TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 
@@ -15,11 +17,7 @@ public partial class CatalogScreen : ContentPage
 
     StackLayout stackLayout = new StackLayout();
 
-    ScrollView scrollView = new ScrollView() 
-    {
-        Padding = new Thickness (20),
-        
-    };
+    ScrollView scrollView = new ScrollView();
 
     
 
@@ -29,11 +27,71 @@ public partial class CatalogScreen : ContentPage
 
         scrollView.Content = stackLayout;
 
-
+        BackgroundColor = CustomColors.WhiteGrey;
 
         Title = "Каталог";
 
-        AddToStack("Фасадные краски", new List<string> { "Для дерева", "Для минеральных поверхностей" });
+        AddToStack(
+            CategoryEnums.WaterbornePaints,
+            new List<CategoryEnums> {
+                CategoryEnums.WaterbornePaintsForDryRooms,
+                CategoryEnums.WaterbornePaintsForWetRooms
+            });
+
+        AddToStack(
+            CategoryEnums.FacadePaints, 
+            new List<CategoryEnums> { 
+                CategoryEnums.FacadePaintsForWood, 
+                CategoryEnums.FacadePaintsForMineralSurfaces 
+            });
+        AddToStack(
+            CategoryEnums.WoodPreservatives, 
+            new List<CategoryEnums> { 
+                CategoryEnums.SaunaPreservatives, 
+                CategoryEnums.WoodFacadePreservatives, 
+                CategoryEnums.InteriorWoodPreservatives 
+            });
+        AddToStack(
+            CategoryEnums.Varnishes, 
+            new List<CategoryEnums> { 
+                CategoryEnums.VarnishesForFloors, 
+                CategoryEnums.VarnishesForFurniture, 
+                CategoryEnums.VarnishesForWallsAndCeilings 
+            });
+
+        AddToStack(
+            CategoryEnums.Enamels,
+            new List<CategoryEnums> {
+                CategoryEnums.EnamelsForMetalConstructions,
+                CategoryEnums.EnamelsForFurniture,
+                CategoryEnums.EnamelsForWindows,
+                CategoryEnums.EnamelsForPlastic,
+                CategoryEnums.EnamelsForFloors,
+                CategoryEnums.EnamelsForRoofs,
+                CategoryEnums.EnamelsForGardenFurniture,
+            });
+
+        AddToStack(
+            CategoryEnums.Primers, 
+            new List<CategoryEnums> { 
+                CategoryEnums.PrimersForMetal, 
+                CategoryEnums.PrimersForMineralSurfaces,
+                CategoryEnums.PrimersForProblematicSurfaces, 
+                CategoryEnums.PrimersForWood, 
+            });
+        
+        AddToStack(
+            CategoryEnums.Solvents,
+            new List<CategoryEnums> {
+                
+            });
+        AddToStack(
+            CategoryEnums.CleaningAgentsAndAdditives,
+            new List<CategoryEnums>
+            {
+
+            });
+
 
         //AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/water_paints.png", text: "Водоэмульсионные краски", page: new WaterBornPaints());
         //AddToGrid(column: 1, row: 0, image: "Images/CategoriesImages/exterier_paint.png", text: "Фасадные краски", page: new FasadePaintsScreen());
@@ -45,10 +103,11 @@ public partial class CatalogScreen : ContentPage
         //AddToGrid(column: 1, row: 3, image: "Images/CategoriesImages/wash_products.png", text: "Моющие средства и добавки", page: new PaintListScreen());
 
         //Content = grid;
-        Content = stackLayout;
+
+        Content = scrollView;
     }
 
-    private void AddToStack(string headlineText, List<string> items) 
+    private void AddToStack(CategoryEnums headlineEnum, List<CategoryEnums> items) 
     {
         StackLayout stack = new StackLayout();
 
@@ -59,8 +118,8 @@ public partial class CatalogScreen : ContentPage
         itemsAfterHeadline.Spacing = 5;
 
         Label headline = CutomTextWidget.CustomText(
-            text: headlineText,
-            textColor: Colors.Black,
+            text: CategoryTranslator.Translate(headlineEnum),
+            textColor: CustomColors.Black,
             textState: TextState.HeadlineSmall,
             horizontalAligment: TextAlignment.Start
             );
@@ -72,14 +131,14 @@ public partial class CatalogScreen : ContentPage
         {
             Command = new Command(async () =>
             {
-                //await NavigateInCatalog(page);
+                await NavigateInCatalog(new CategoryPage(headlineEnum, items));
 
             })
         });
 
         Label desc = CutomTextWidget.CustomText(
-            text: "Эти краски ипользуются для окраски стен снаружи помещения",
-            textColor: Colors.Black,
+            text: CategoryTranslator.GetDescription(headlineEnum),
+            textColor: CustomColors.Black,
             textState: TextState.DescMedium,
             horizontalAligment: TextAlignment.Start
             );
@@ -94,7 +153,7 @@ public partial class CatalogScreen : ContentPage
         {
             Content = stack, // Ваш StackLayout
             HasShadow = true, // Включить тень
-            BackgroundColor = Colors.LightGray,
+            BackgroundColor = CustomColors.White,
             Padding = new Thickness(20),
             Margin = new Thickness(20, 10),
             CornerRadius = 10 // Настройте скругление углов по желанию
@@ -105,16 +164,16 @@ public partial class CatalogScreen : ContentPage
 
     }
 
-    StackLayout getItems(List<string> itemsNames) 
+    StackLayout getItems(List<CategoryEnums> itemsNames) 
     {
         StackLayout items = new StackLayout();
         items.Spacing = 3;
 
-        foreach (string item in itemsNames) 
+        foreach (CategoryEnums item in itemsNames) 
         {
             Label headline = CutomTextWidget.CustomText(
-            text: item,
-            textColor: Colors.Black,
+            text: CategoryTranslator.Translate(item),
+            textColor: CustomColors.Black,
             textState: TextState.BodySmall,
             horizontalAligment: TextAlignment.Start
             );
@@ -126,7 +185,7 @@ public partial class CatalogScreen : ContentPage
             {
                 Command = new Command(async () =>
                 {
-                    //await NavigateInCatalog(page);
+                    await NavigateInCatalog(new CategoryPage(item, new List<CategoryEnums>()));
 
                 })
             });
@@ -143,7 +202,7 @@ public partial class CatalogScreen : ContentPage
 
         Label label = CutomTextWidget.CustomText(
             text: text,
-            textColor: Colors.White,
+            textColor: CustomColors.White,
             textState: TextState.BodySmall,
             horizontalAligment: TextAlignment.Start
             );
@@ -164,7 +223,7 @@ public partial class CatalogScreen : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Colors.Black,
+            Color = CustomColors.Black,
         }, column, row);
 
         grid.Add(new Image

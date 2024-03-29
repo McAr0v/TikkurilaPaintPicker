@@ -27,6 +27,10 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
+                        Categories = new List<CategoryEnums> {
+                            CategoryEnums.WaterbornePaints,
+                            CategoryEnums.WaterbornePaintsForDryRooms
+                        }
                     }
                 );
             WaterEmulsionPaintList.Add
@@ -42,6 +46,10 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
+                        Categories = new List<CategoryEnums> {
+                            CategoryEnums.WaterbornePaints,
+                            CategoryEnums.WaterbornePaintsForDryRooms
+                        }
                     }
                 );
 
@@ -58,6 +66,11 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
+                        Categories = new List<CategoryEnums> {
+                            CategoryEnums.WaterbornePaints,
+                            CategoryEnums.WaterbornePaintsForDryRooms,
+                            CategoryEnums.WaterbornePaintsForWetRooms,
+                        }
                     }
                 );
 
@@ -74,6 +87,10 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
+                        Categories = new List<CategoryEnums> {
+                            CategoryEnums.WaterbornePaints,
+                            CategoryEnums.WaterbornePaintsForWetRooms,
+                        }
                     }
                 );
 

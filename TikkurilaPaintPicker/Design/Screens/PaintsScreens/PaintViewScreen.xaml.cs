@@ -48,7 +48,13 @@ public partial class PaintViewScreen : ContentPage
         BackgroundColor = CustomColors.TikkurilaRed
     };
 
-    Label countOfPaint;
+    Label countOfPaint = CutomTextWidget.CustomText
+            (
+                text: "Результат:",
+                textColor: CustomColors.Black,
+                textState: TextState.BodySmall,
+                horizontalAligment: TextAlignment.Start
+            );
 
 	public PaintViewScreen(PaintClass paint)
 	{
@@ -130,13 +136,7 @@ public partial class PaintViewScreen : ContentPage
 
     private void GenerateCalc() 
     {
-        countOfPaint = CutomTextWidget.CustomText
-            (
-                text: "Результат:",
-                textColor: CustomColors.Black,
-                textState: TextState.BodySmall,
-                horizontalAligment: TextAlignment.Start
-            );
+         
 
         StackLayout headlineDesc = new StackLayout() { Spacing = 5 };
 

@@ -33,64 +33,32 @@ public partial class CatalogScreen : ContentPage
 
         AddToStack(
             CategoryEnums.WaterbornePaints,
-            new List<CategoryEnums> {
-                CategoryEnums.WaterbornePaintsForDryRooms,
-                CategoryEnums.WaterbornePaintsForWetRooms
-            });
+            CategoryTranslator.GetCategoriesList(CategoryEnums.WaterbornePaints));
 
         AddToStack(
-            CategoryEnums.FacadePaints, 
-            new List<CategoryEnums> { 
-                CategoryEnums.FacadePaintsForWood, 
-                CategoryEnums.FacadePaintsForMineralSurfaces 
-            });
+            CategoryEnums.FacadePaints,
+            CategoryTranslator.GetCategoriesList(CategoryEnums.FacadePaints));
         AddToStack(
-            CategoryEnums.WoodPreservatives, 
-            new List<CategoryEnums> { 
-                CategoryEnums.SaunaPreservatives, 
-                CategoryEnums.WoodFacadePreservatives, 
-                CategoryEnums.InteriorWoodPreservatives 
-            });
+            CategoryEnums.WoodPreservatives,
+            CategoryTranslator.GetCategoriesList(CategoryEnums.WoodPreservatives));
         AddToStack(
-            CategoryEnums.Varnishes, 
-            new List<CategoryEnums> { 
-                CategoryEnums.VarnishesForFloors, 
-                CategoryEnums.VarnishesForFurniture, 
-                CategoryEnums.VarnishesForWallsAndCeilings 
-            });
+            CategoryEnums.Varnishes,
+            CategoryTranslator.GetCategoriesList(CategoryEnums.Varnishes));
 
         AddToStack(
             CategoryEnums.Enamels,
-            new List<CategoryEnums> {
-                CategoryEnums.EnamelsForMetalConstructions,
-                CategoryEnums.EnamelsForFurniture,
-                CategoryEnums.EnamelsForWindows,
-                CategoryEnums.EnamelsForPlastic,
-                CategoryEnums.EnamelsForFloors,
-                CategoryEnums.EnamelsForRoofs,
-                CategoryEnums.EnamelsForGardenFurniture,
-            });
+            CategoryTranslator.GetCategoriesList(CategoryEnums.Enamels));
 
         AddToStack(
-            CategoryEnums.Primers, 
-            new List<CategoryEnums> { 
-                CategoryEnums.PrimersForMetal, 
-                CategoryEnums.PrimersForMineralSurfaces,
-                CategoryEnums.PrimersForProblematicSurfaces, 
-                CategoryEnums.PrimersForWood, 
-            });
+            CategoryEnums.Primers,
+            CategoryTranslator.GetCategoriesList(CategoryEnums.Primers));
         
         AddToStack(
             CategoryEnums.Solvents,
-            new List<CategoryEnums> {
-                
-            });
+            CategoryTranslator.GetCategoriesList(CategoryEnums.Solvents));
         AddToStack(
             CategoryEnums.CleaningAgentsAndAdditives,
-            new List<CategoryEnums>
-            {
-
-            });
+            CategoryTranslator.GetCategoriesList(CategoryEnums.CleaningAgentsAndAdditives));
 
 
         //AddToGrid(column: 0, row: 0, image: "Images/CategoriesImages/water_paints.png", text: "Водоэмульсионные краски", page: new WaterBornPaints());
@@ -151,12 +119,12 @@ public partial class CatalogScreen : ContentPage
 
         Frame frame = new Frame
         {
-            Content = stack, // Ваш StackLayout
-            HasShadow = true, // Включить тень
+            Content = stack, 
+            HasShadow = true, 
             BackgroundColor = CustomColors.White,
             Padding = new Thickness(20),
             Margin = new Thickness(20, 10),
-            CornerRadius = 10 // Настройте скругление углов по желанию
+            CornerRadius = 10 
         };
 
         stackLayout.Add(frame);

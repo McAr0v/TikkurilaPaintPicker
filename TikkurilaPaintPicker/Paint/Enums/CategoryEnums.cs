@@ -175,6 +175,67 @@ namespace TikkurilaPaintPicker.Paint.Enums
             }
         }
 
+        public static List<CategoryEnums> GetCategoriesList(CategoryEnums category)
+        {
+            switch (category)
+            {
+                case CategoryEnums.FacadePaints:
+                    return new List<CategoryEnums> 
+                    {
+                        CategoryEnums.FacadePaintsForWood,
+                        CategoryEnums.FacadePaintsForMineralSurfaces
+                    };
+                
+                case CategoryEnums.WoodPreservatives:
+                    return new List<CategoryEnums>
+                    {
+                        CategoryEnums.SaunaPreservatives,
+                        CategoryEnums.WoodFacadePreservatives,
+                        CategoryEnums.InteriorWoodPreservatives,
+                    };
+               
+                case CategoryEnums.Varnishes:
+                    return new List<CategoryEnums>
+                    {
+                        CategoryEnums.VarnishesForWallsAndCeilings,
+                        CategoryEnums.VarnishesForFurniture,
+                        CategoryEnums.VarnishesForFloors,
+                    };
+                
+                case CategoryEnums.WaterbornePaints:
+                    return new List<CategoryEnums>
+                    {
+                        CategoryEnums.WaterbornePaintsForDryRooms,
+                        CategoryEnums.WaterbornePaintsForWetRooms,
+                    };
+                
+                case CategoryEnums.Primers:
+                    return new List<CategoryEnums>
+                    {
+                        CategoryEnums.PrimersForProblematicSurfaces,
+                        CategoryEnums.PrimersForWood,
+                        CategoryEnums.PrimersForMetal,
+                        CategoryEnums.PrimersForMineralSurfaces,
+                    };
+                
+                case CategoryEnums.Enamels:
+                    return new List<CategoryEnums>
+                    {
+                        CategoryEnums.EnamelsForMetalConstructions,
+                        CategoryEnums.EnamelsForFurniture,
+                        CategoryEnums.EnamelsForWindows,
+                        CategoryEnums.EnamelsForPlastic,
+                        CategoryEnums.EnamelsForFloors,
+                        CategoryEnums.EnamelsForRoofs,
+                        CategoryEnums.EnamelsForGardenFurniture,
+
+                    };
+
+                default:
+                    return new List<CategoryEnums>();
+            }
+        }
+
     }
 
 

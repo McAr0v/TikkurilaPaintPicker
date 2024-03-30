@@ -8,7 +8,7 @@ namespace TikkurilaPaintPicker.Design.Colors
 {
     public static class CustomColors
     {
-        public static Color YellowDark { get; } = Color.FromArgb("#E8BD70");
+        public static Color TikkurilaRed { get; } = Color.FromArgb("#ED1C24");
         public static Color YellowLight { get; } = Color.FromArgb("#EDD185");
         public static Color Black { get; } = Color.FromArgb("#000000");
         public static Color BlackLight { get; } = Color.FromArgb("#141414");

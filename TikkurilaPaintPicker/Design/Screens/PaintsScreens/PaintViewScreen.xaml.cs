@@ -1,9 +1,20 @@
+using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 using TikkurilaPaintPicker.Paint;
+using TikkurilaPaintPicker.Paint.Enums;
 
 namespace TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 
 public partial class PaintViewScreen : ContentPage
 {
+
+    // Делегат для перехода на страницу категории
+    public delegate Task NavigateToPageDelegate(CategoryEnums categoryEnum);
+
+    // Функция для перехода на страницу категории
+    private async Task OnLabelTapped(CategoryEnums categoryEnum)
+    {
+        await Navigation.PushAsync(new CategoryPage(categoryEnum, CategoryTranslator.GetCategoriesList(categoryEnum)));
+    }
 
     Button button = new Button();
 
@@ -22,7 +33,7 @@ public partial class PaintViewScreen : ContentPage
             Content = new StackLayout
             {
                 Margin = new Thickness(20),
-                Spacing = 10,
+                Spacing = 20,
                 Children =
             {
                 new Image
@@ -43,6 +54,8 @@ public partial class PaintViewScreen : ContentPage
                 {
                     Text = paint.Description,
                 },
+
+                paint.GetProductOptionsFrame(OnLabelTapped),
 
                 button
 

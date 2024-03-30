@@ -14,4 +14,20 @@ namespace TikkurilaPaintPicker.Paint.Enums
         Blue,
         Red
     }
+
+    public static class PaintColor
+    {
+        public static string GetPaintColorName(PaintColorEnum color)
+        {
+            switch (color) 
+            {
+                case PaintColorEnum.LightShades: return "Колеровка в светлые оттенки";
+                case PaintColorEnum.DarkShades: return "Колеровка в темные оттенки";
+                case PaintColorEnum.White: return "Белый";
+                case PaintColorEnum.Blue: return "Синий";
+                case PaintColorEnum.Red: return "Красный";
+                default: return "Цвет не найден";
+            }
+        }
+    }
 }

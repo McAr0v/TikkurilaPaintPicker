@@ -1,3 +1,5 @@
+using Microsoft.Maui.Graphics;
+using System.Data.Common;
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
@@ -19,6 +21,8 @@ public partial class CategoryPage : ContentPage
 
     Label categoryDesc;
 
+    Label paintsHeadline;
+
     public CategoryPage(CategoryEnums categoryEnum, List<CategoryEnums> childrenCategories)
 	{
 		InitializeComponent();
@@ -27,6 +31,13 @@ public partial class CategoryPage : ContentPage
                 text: CategoryTranslator.GetDescription(categoryEnum),
                 textColor: CustomColors.Black,
                 textState: TextState.BodySmall,
+                horizontalAligment: TextAlignment.Start
+                );
+
+        paintsHeadline = CutomTextWidget.CustomText(
+                text: $"Все краски категории {CategoryTranslator.Translate(categoryEnum)}:",
+                textColor: CustomColors.Black,
+                textState: TextState.HeadlineMedium,
                 horizontalAligment: TextAlignment.Start
                 );
 
@@ -43,10 +54,13 @@ public partial class CategoryPage : ContentPage
         if (childrenCategories.Count != 0) 
         {
             AddToStack(childrenCategories);
-        } 
+        }
 
-        AddPaints();
+        stackLayout.Add(paintsHeadline);
 
+        //AddPaints();
+
+        AddPaintsTwo();
 
         scrollView.Content = stackLayout;
 
@@ -85,6 +99,97 @@ public partial class CategoryPage : ContentPage
         }
     }
 
+    private void AddPaintsTwo()
+    {
+        foreach(PaintClass paint in paints)
+{
+            Grid grid = new Grid
+            {
+                //Padding = new Thickness(10),
+                ColumnSpacing = 10,
+                RowSpacing = 10,
+            };
+
+            StackLayout stack = new StackLayout()
+            {
+                Spacing = 10
+            };
+
+            // Первая колонка, занимающая 1/3 ширины экрана
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+            // Вторая колонка, занимающая оставшуюся часть ширины
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
+
+            Image image = new Image
+            {
+                Source = $"Images/PaintImages/{paint.Name}.png",
+                Aspect = Aspect.AspectFill,
+            };
+
+            Label label = CutomTextWidget.CustomText(
+                text: paint.Name,
+                textColor: CustomColors.Black,
+                textState: TextState.HeadlineSmall,
+                horizontalAligment: TextAlignment.Start
+            );
+
+            Label paintDesc = CutomTextWidget.CustomText(
+                text: paint.Description,
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium,
+                horizontalAligment: TextAlignment.Start
+            );
+
+            Label textButton = CutomTextWidget.CustomText(
+                text: "Подробнее",
+                textColor: CustomColors.TikkurilaRed,
+                textState: TextState.DescMedium,
+                horizontalAligment: TextAlignment.Start,
+                underline: TextDecorations.Underline
+            );
+
+            paintDesc.LineBreakMode = LineBreakMode.WordWrap;
+            paintDesc.MaxLines = 3;
+
+            label.BindingContext = paint;
+
+            
+
+            stack.Children.Add(label);
+            stack.Children.Add(paintDesc);
+            stack.Children.Add(textButton);
+
+            grid.Add(image, 0, 0);
+            grid.Add(stack, 1, 0); 
+
+            Frame frame = new Frame
+            {
+                Content = grid, 
+                HasShadow = true, 
+                BackgroundColor = CustomColors.White,
+                Padding = new Thickness(20),
+                CornerRadius = 10 
+            };
+
+            frame.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    // Получаем объект Paint из BindingContext метки
+                    PaintClass selectedPaint = label.BindingContext as PaintClass;
+                    if (selectedPaint != null)
+                    {
+                        await NavigateToPaintPage(selectedPaint);
+                    }
+                })
+            });
+
+
+            stackLayout.Children.Add(frame); // Добавляем Grid в StackLayout
+        }
+    }
+
     private async Task NavigateToPaintPage(PaintClass paint)
     {
         await Navigation.PushAsync(new PaintViewScreen(paint: paint));
@@ -117,7 +222,7 @@ public partial class CategoryPage : ContentPage
             {
                 Command = new Command(async () =>
                 {
-                    await NavigateInCatalog(new CategoryPage(headlineEnum, new List<CategoryEnums>()));
+                    await NavigateInCatalog(new CategoryPage(headlineEnum, CategoryTranslator.GetCategoriesList(headlineEnum)));
 
                 })
             });

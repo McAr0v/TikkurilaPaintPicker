@@ -28,7 +28,7 @@ public partial class FasadePaintsScreen : ContentPage
     private void AddToGrid(int column, int row, string image, string text, ContentPage page)
     {
 
-        Label label = CutomTextWidget.CustomText(
+        Label label = CustomTextWidget.CustomText(
             text: text,
             textColor: CustomColors.White,
             textState: TextState.BodySmall,

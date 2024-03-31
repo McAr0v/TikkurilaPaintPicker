@@ -48,7 +48,7 @@ public partial class PaintViewScreen : ContentPage
         BackgroundColor = CustomColors.TikkurilaRed
     };
 
-    Label countOfPaint = CutomTextWidget.CustomText
+    Label countOfPaint = CustomTextWidget.CustomText
             (
                 text: "Результат:",
                 textColor: CustomColors.Black,
@@ -141,7 +141,7 @@ public partial class PaintViewScreen : ContentPage
         StackLayout headlineDesc = new StackLayout() { Spacing = 5 };
 
         headlineDesc.Add(
-            CutomTextWidget.CustomText(
+            CustomTextWidget.CustomText(
                 text: "Калькулятор расхода",
                 textColor: CustomColors.Black,
                 textState: TextState.HeadlineMedium,
@@ -150,7 +150,7 @@ public partial class PaintViewScreen : ContentPage
             );
 
         headlineDesc.Add(
-            CutomTextWidget.CustomText(
+            CustomTextWidget.CustomText(
                 text: "Введите вашу площадь поверхности и нажмите кнопку 'Рассчитать'. ",
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,

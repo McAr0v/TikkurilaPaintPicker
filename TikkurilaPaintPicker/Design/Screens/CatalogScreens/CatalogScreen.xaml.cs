@@ -85,7 +85,7 @@ public partial class CatalogScreen : ContentPage
 
         itemsAfterHeadline.Spacing = 5;
 
-        Label headline = CutomTextWidget.CustomText(
+        Label headline = CustomTextWidget.CustomText(
             text: CategoryTranslator.Translate(headlineEnum),
             textColor: CustomColors.Black,
             textState: TextState.HeadlineSmall,
@@ -104,7 +104,7 @@ public partial class CatalogScreen : ContentPage
             })
         });
 
-        Label desc = CutomTextWidget.CustomText(
+        Label desc = CustomTextWidget.CustomText(
             text: CategoryTranslator.GetDescription(headlineEnum),
             textColor: CustomColors.Black,
             textState: TextState.DescMedium,
@@ -139,7 +139,7 @@ public partial class CatalogScreen : ContentPage
 
         foreach (CategoryEnums item in itemsNames) 
         {
-            Label headline = CutomTextWidget.CustomText(
+            Label headline = CustomTextWidget.CustomText(
             text: CategoryTranslator.Translate(item),
             textColor: CustomColors.Black,
             textState: TextState.BodySmall,
@@ -168,7 +168,7 @@ public partial class CatalogScreen : ContentPage
     private void AddToGrid(int column, int row, string image, string text, ContentPage page) 
     {      
 
-        Label label = CutomTextWidget.CustomText(
+        Label label = CustomTextWidget.CustomText(
             text: text,
             textColor: CustomColors.White,
             textState: TextState.BodySmall,

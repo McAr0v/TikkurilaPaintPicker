@@ -2,6 +2,7 @@ using Microsoft.Maui.Graphics;
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
+using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens;
 
 namespace TikkurilaPaintPicker.Design.Screens;
 
@@ -18,14 +19,14 @@ public partial class MainScreen : ContentPage
 	{
 		InitializeComponent();
 
-        label = CutomTextWidget.CustomText(
+        label = CustomTextWidget.CustomText(
             text: "Добро пожаловать в приложение Tikkurila!", 
             textColor: CustomColors.Black, 
             textState: TextState.HeadlineMedium,
             horizontalAligment: TextAlignment.Center
             );
 
-        desc = CutomTextWidget.CustomText(
+        desc = CustomTextWidget.CustomText(
             text: "Мы рады видеть Вас в нашем приложении! " +
                     "В нем вы можете ознакомиться с нашими красками. " +
                     "\r\n\r\nВоспользуйтесь подборщиком красок или каталогом, чтобы найти подходящую краску для ремонта!",
@@ -93,7 +94,7 @@ public partial class MainScreen : ContentPage
     private async Task NavigateToPickerPage()
     {
 
-        await Navigation.PushAsync(new CatalogScreen());
+        await Navigation.PushAsync(new LocationLayer());
 
     }
 }

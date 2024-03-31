@@ -23,6 +23,22 @@ namespace TikkurilaPaintPicker.Paint
         public List<PaintGlossEnum> Gloss { get; set; }
         public List<CategoryEnums> Categories { get; set; }
 
+        public static PaintClass GetEmptyPaint() 
+        {
+            return new PaintClass()
+            {
+                Name = "",
+                Description = "",
+                Consumption = 0,
+                Materials = new List<PaintMaterialEnum>() { },
+                Objects = new List<PaintObjectEnum>() { },
+                Locations = new List<PaintLocationEnum>() { },
+                Thinner = PaintThinnerEnum.Water,
+                Colors = new List<PaintColorEnum>() { },
+                Categories = new List<CategoryEnums>() { },
+            };
+        }
+
         public Frame GetProductOptionsFrame(NavigateToPageDelegate navigateToPage) 
         {
             StackLayout views = new StackLayout()
@@ -36,14 +52,14 @@ namespace TikkurilaPaintPicker.Paint
                 Margin = new Thickness(0, 0, 0, 10)
             };
 
-            Label headline = CutomTextWidget.CustomText(
+            Label headline = CustomTextWidget.CustomText(
                     text: "Технические характеристики:",
                     textColor: CustomColors.Black,
                     textState: TextState.HeadlineMedium,
                     horizontalAligment: TextAlignment.Start
                 );
 
-            Label desc = CutomTextWidget.CustomText(
+            Label desc = CustomTextWidget.CustomText(
                     text: "Основные данные о краске из технической спецификации",
                     textColor: CustomColors.Black,
                     textState: TextState.DescMedium,
@@ -79,7 +95,7 @@ namespace TikkurilaPaintPicker.Paint
         private Grid GetGrid(OptionsEnums option, NavigateToPageDelegate navigateToPage)
         {
 
-            Label headline = CutomTextWidget.CustomText(
+            Label headline = CustomTextWidget.CustomText(
                     text: OptionsClass.GetOptionsName(option),
                     textColor: CustomColors.Black,
                     textState: TextState.BodySmall,
@@ -131,7 +147,7 @@ namespace TikkurilaPaintPicker.Paint
 
             foreach (PaintObjectEnum objects in Objects)
             {
-                Label label = CutomTextWidget.CustomText(
+                Label label = CustomTextWidget.CustomText(
                     text: PaintObject.GetPaintObjectName(objects),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -152,7 +168,7 @@ namespace TikkurilaPaintPicker.Paint
 
             foreach (PaintLocationEnum location in Locations)
             {
-                Label label = CutomTextWidget.CustomText(
+                Label label = CustomTextWidget.CustomText(
                     text: PaintLocation.GetPaintLocationString(location),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -173,7 +189,7 @@ namespace TikkurilaPaintPicker.Paint
 
             foreach (PaintMaterialEnum material in Materials)
             {
-                Label label = CutomTextWidget.CustomText(
+                Label label = CustomTextWidget.CustomText(
                     text: PaintMaterial.GetPaintMaterialName(material),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -194,7 +210,7 @@ namespace TikkurilaPaintPicker.Paint
 
             foreach (PaintColorEnum color in Colors)
             {
-                Label label = CutomTextWidget.CustomText(
+                Label label = CustomTextWidget.CustomText(
                     text: PaintColor.GetPaintColorName(color),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -215,7 +231,7 @@ namespace TikkurilaPaintPicker.Paint
 
             foreach (PaintGlossEnum gloss in Gloss)
             {
-                Label label = CutomTextWidget.CustomText(
+                Label label = CustomTextWidget.CustomText(
                     text: PaintGloss.GetGlossName(gloss),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -234,7 +250,7 @@ namespace TikkurilaPaintPicker.Paint
         {
             StackLayout stack = new StackLayout();
 
-            Label label = CutomTextWidget.CustomText(
+            Label label = CustomTextWidget.CustomText(
                     text: PaintThinner.getThinnerName(Thinner),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -253,7 +269,7 @@ namespace TikkurilaPaintPicker.Paint
             StackLayout stack = new StackLayout();
 
 
-            Label label = CutomTextWidget.CustomText(
+            Label label = CustomTextWidget.CustomText(
                     text: $"{Consumption} кв.м/л",
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,
@@ -273,7 +289,7 @@ namespace TikkurilaPaintPicker.Paint
 
             foreach (CategoryEnums category in Categories)
             {
-                Label label = CutomTextWidget.CustomText(
+                Label label = CustomTextWidget.CustomText(
                     text: CategoryTranslator.Translate(category),
                     textColor: CustomColors.Graphite,
                     textState: TextState.BodySmall,

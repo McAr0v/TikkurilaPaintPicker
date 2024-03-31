@@ -27,14 +27,14 @@ public partial class CategoryPage : ContentPage
 	{
 		InitializeComponent();
 
-        categoryDesc = CutomTextWidget.CustomText(
+        categoryDesc = CustomTextWidget.CustomText(
                 text: CategoryTranslator.GetDescription(categoryEnum),
                 textColor: CustomColors.Black,
                 textState: TextState.BodySmall,
                 horizontalAligment: TextAlignment.Start
                 );
 
-        paintsHeadline = CutomTextWidget.CustomText(
+        paintsHeadline = CustomTextWidget.CustomText(
                 text: $"Все краски категории {CategoryTranslator.Translate(categoryEnum)}:",
                 textColor: CustomColors.Black,
                 textState: TextState.HeadlineMedium,
@@ -127,21 +127,21 @@ public partial class CategoryPage : ContentPage
                 Aspect = Aspect.AspectFill,
             };
 
-            Label label = CutomTextWidget.CustomText(
+            Label label = CustomTextWidget.CustomText(
                 text: paint.Name,
                 textColor: CustomColors.Black,
                 textState: TextState.HeadlineSmall,
                 horizontalAligment: TextAlignment.Start
             );
 
-            Label paintDesc = CutomTextWidget.CustomText(
+            Label paintDesc = CustomTextWidget.CustomText(
                 text: paint.Description,
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,
                 horizontalAligment: TextAlignment.Start
             );
 
-            Label textButton = CutomTextWidget.CustomText(
+            Label textButton = CustomTextWidget.CustomText(
                 text: "Подробнее",
                 textColor: CustomColors.TikkurilaRed,
                 textState: TextState.DescMedium,
@@ -208,7 +208,7 @@ public partial class CategoryPage : ContentPage
 
             stack.Spacing = 10;
 
-            Label headline = CutomTextWidget.CustomText(
+            Label headline = CustomTextWidget.CustomText(
             text: CategoryTranslator.Translate(headlineEnum),
             textColor: CustomColors.Black,
             textState: TextState.HeadlineSmall,
@@ -227,7 +227,7 @@ public partial class CategoryPage : ContentPage
                 })
             });
 
-            Label desc = CutomTextWidget.CustomText(
+            Label desc = CustomTextWidget.CustomText(
                 text: CategoryTranslator.GetDescription(headlineEnum),
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,

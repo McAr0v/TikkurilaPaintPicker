@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TikkurilaPaintPicker.Design.Font
 {
-    public static class CutomTextWidget
+    public static class CustomTextWidget
     {
         public static Label CustomText(
             string text, 

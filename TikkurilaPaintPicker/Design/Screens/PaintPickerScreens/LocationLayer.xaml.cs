@@ -7,41 +7,67 @@ namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens;
 
 public partial class LocationLayer : ContentPage
 {
+    // Изначальная переменная, которую будем постепенно заполнять
+    // и передавать между экранами
+    
+    PaintClass paint = PaintClass.GetEmptyPaint();
 
-	PaintClass paint = PaintClass.GetEmptyPaint();
+    // Стаки для самой страницы и для элементов виджета с вопросами
 
-	StackLayout stack = new StackLayout() { Spacing = 20, Padding = 20};
-	StackLayout answersStack = new StackLayout() { Spacing = 5, Padding = 20};
+    StackLayout pageStack = new StackLayout() { Spacing = 20, Padding = 20 };
+    ScrollView primaryScrollForPage = new ScrollView();
+    
 
-	Button nextButton = new Button() { BackgroundColor = CustomColors.TikkurilaRed, Text = "Следующий шаг", TextColor = CustomColors.White};
-	Button previousButton = new Button() { BackgroundColor = CustomColors.GreyLight, Text = "Вернуться назад", TextColor = CustomColors.Black};
+    // Кнопки
 
-	Label pageHeadline = CustomTextWidget.CustomText
-		(
-		text: "Подборщик красок",
-		textColor: CustomColors.Black,
-		textState: TextState.HeadlineMedium,
-		horizontalAligment: TextAlignment.Center
-		);
+    Button nextButton = new Button() { BackgroundColor = CustomColors.TikkurilaRed, Text = "Следующий шаг", TextColor = CustomColors.White };
+    Button previousButton = new Button() { BackgroundColor = CustomColors.GreyLight, Text = "Вернуться назад", TextColor = CustomColors.Black };
 
-    Label pageDesc = CustomTextWidget.CustomText
-        (
-        text: "В этом разделе вы сможете самостоятельно подобрать краску, просто отвечая по порядку на простые вопросы" +
-        "\r\n\r\n Давайте приступим к делу и ответим на первый вопрос!",
-        textColor: CustomColors.Black,
-        textState: TextState.BodySmall,
-        horizontalAligment: TextAlignment.Center
-        );
+    // Контейнер для размещения кнопок на одной плоскости
 
-    PaintLocationEnum selectedLocation = PaintLocationEnum.Indoor;
+    Grid buttonsGrid = new Grid
+    {
+        ColumnSpacing = 20,
+        Margin = new Thickness(0, 20),
+    };
 
-    Picker picker = new Picker();
+    // Frame, для красивого отображения вопросов на странице
+
+    Frame answerWidget = new Frame
+    {
+        HasShadow = true,
+        BackgroundColor = CustomColors.White,
+        Padding = new Thickness(20),
+        Margin = new Thickness(0, 10),
+        CornerRadius = 10
+    };
+
+    // Список ответов
+
+    List<PaintLocationEnum> enumsList = new List<PaintLocationEnum>() { PaintLocationEnum.Indoor, PaintLocationEnum.Outdoor };    
 
     public LocationLayer()
 	{
 		InitializeComponent();
 
-		stack.Add
+        // ---- КНОПКИ -----
+
+        // Назначаем действия на кнопки
+        previousButton.Clicked += async (sender, args) => await Navigation.PopAsync();
+        nextButton.Clicked += async (sender, args) => await GoToNextScreen(paint);
+        
+        // Добавляем кнопки в 2 колонки
+        buttonsGrid.Add(previousButton, 0, 0);
+        buttonsGrid.Add(nextButton, 1, 0);
+
+        // ----- РАДИО-КНОПКИ ----
+        GenerateAnswersWidget();
+        
+
+        // ---- ГЕНЕРИРУМ САМ ЭКРАН ----
+
+        // Добавляем картинку 
+		pageStack.Add
 			(
 				new Image
 				{
@@ -52,57 +78,115 @@ public partial class LocationLayer : ContentPage
 				}
 
             );
-		stack.Add(pageHeadline);
-		stack.Add(pageDesc);
 
-        foreach (PaintLocationEnum location in Enum.GetValues(typeof(PaintLocationEnum)))
+        // Добавляем заголовок и описание экрана
+		GenerateHeadlineAndDesc();
+
+        // Добавляем виджет вопроса и ответа
+        pageStack.Add (answerWidget);
+
+        // Добавляем кнопки
+        pageStack.Add(buttonsGrid);
+
+        // Добавляем наш pageStack в ScrollView на случай, если 
+        // мобильное устройство будет маленькое и содержимое pageStack
+        // Не будет влазить на весь экран
+        primaryScrollForPage.Content = pageStack;
+
+        // Устанавливаем заголовок страницы
+        Title = "Подборщик красок";
+
+        // В качестве контента ставим наш ScrollView
+        Content = primaryScrollForPage;
+
+	}
+
+    private void GenerateAnswersWidget() 
+    {
+        StackLayout answersStack = new StackLayout() { Spacing = 5 };
+
+        Label answerHeadline = CustomTextWidget.CustomText
+        (
+            text: "Где вы планируете красить?",
+            textColor: CustomColors.Black,
+            textState: TextState.HeadlineMedium,
+            horizontalAligment: TextAlignment.Center,
+            padding: new Thickness(0, 0, 0, 20)
+        );
+
+        // Генерируем кнопки и заголовок в Frame
+        answersStack.Add(answerHeadline);
+        answersStack.Add(GenerateRadioButtons());
+        answerWidget.Content = answersStack;
+
+    }
+
+    private void GenerateHeadlineAndDesc() 
+    {
+        // Заголовок и описание страницы
+
+        Label pageHeadline = CustomTextWidget.CustomText
+            (
+            text: "Подборщик красок",
+            textColor: CustomColors.Black,
+            textState: TextState.HeadlineMedium,
+            horizontalAligment: TextAlignment.Center
+            );
+
+        Label pageDesc = CustomTextWidget.CustomText
+            (
+            text: "В этом разделе вы сможете самостоятельно подобрать краску, просто отвечая по порядку на простые вопросы" +
+            "\r\n\r\n Давайте приступим к делу и ответим на первый вопрос!",
+            textColor: CustomColors.Black,
+            textState: TextState.BodySmall,
+            horizontalAligment: TextAlignment.Center
+            );
+
+        pageStack.Add(pageHeadline);
+        pageStack.Add(pageDesc);
+    }
+
+    private StackLayout GenerateRadioButtons() 
+    {
+
+        StackLayout layout = new StackLayout();
+
+        foreach (PaintLocationEnum location in enumsList)
         {
-
-            HorizontalStackLayout horizontalStack = new HorizontalStackLayout() { 
-                //Spacing = 20,
-                VerticalOptions = LayoutOptions.Center,
-                //HorizontalOptions = LayoutOptions.Center
-            };
 
             RadioButton radioButton = new RadioButton
             {
-
-                GroupName = "LocationGroup", // Группируем радиокнопки
-                IsChecked = false
+                TextColor = CustomColors.Black,
+                Content = PaintLocation.GetPaintLocationString(location),
+                IsChecked = false,
+                BorderColor = CustomColors.Black,
+                Margin = 0,
+                Padding = 0
             };
 
             radioButton.CheckedChanged += (sender, e) =>
             {
                 if (e.Value) // Если радиокнопка выбрана
                 {
-                    // Сохраняем выбранное значение в переменную
-                    selectedLocation = location;
+                    paint.Locations = new List<PaintLocationEnum> { location };
                 }
             };
 
-            Label radioText = CustomTextWidget.CustomText
-            (
-                text: PaintLocation.GetPaintLocationString(location),
-                textColor: CustomColors.Black,
-                textState: TextState.BodySmall,
-                horizontalAligment: TextAlignment.Center
-            );
-
-            radioText.VerticalOptions = LayoutOptions.Center;
-
-            horizontalStack.Add(radioButton);
-            horizontalStack.Add(radioText);
-
-
-            answersStack.Children.Add(horizontalStack);
+            layout.Children.Add(radioButton);
         }
 
-            stack.Add (answersStack);
+        return layout;
+    }
 
-            Title = "Подборщик красок";
-
-		Content = stack;
-
-
-	}
+    private async Task GoToNextScreen(PaintClass paint) 
+    {
+        if (paint.Locations.Count > 0)
+        {
+            await Navigation.PushAsync(new ObjectsLayer(paint));
+        }
+        else 
+        {
+            await DisplayAlert("Переход невозможен!", "Вы не ответили на вопрос!", "Ок, сейчас отвечу");
+        }
+    }
 }

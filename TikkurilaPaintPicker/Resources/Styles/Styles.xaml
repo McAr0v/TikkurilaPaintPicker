@@ -259,7 +259,10 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateGroupList>
+            
+            
         </Setter>
+        
     </Style>
 
     <Style TargetType="RefreshView">

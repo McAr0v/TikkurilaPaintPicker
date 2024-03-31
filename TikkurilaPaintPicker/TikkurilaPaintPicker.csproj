@@ -149,6 +149,9 @@
 	  <MauiXaml Update="Design\Screens\PaintPickerScreens\LocationLayer.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Design\Screens\PaintPickerScreens\ObjectsLayer.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Design\Screens\PaintsScreens\PaintListScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

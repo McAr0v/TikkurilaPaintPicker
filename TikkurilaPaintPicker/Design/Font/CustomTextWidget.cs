@@ -13,7 +13,8 @@ namespace TikkurilaPaintPicker.Design.Font
             Color textColor, 
             TextState textState,
             TextDecorations underline = TextDecorations.None,
-            TextAlignment horizontalAligment = TextAlignment.Start
+            TextAlignment horizontalAligment = TextAlignment.Start,
+            Thickness padding = new Thickness()
             ) 
         {
             return new Label 
@@ -24,6 +25,7 @@ namespace TikkurilaPaintPicker.Design.Font
                 TextDecorations = underline,
                 HorizontalTextAlignment = horizontalAligment,
                 FontSize = GetFontSize(state: textState),
+                Padding = padding
             };
         }
 

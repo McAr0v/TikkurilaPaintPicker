@@ -9,21 +9,32 @@ namespace TikkurilaPaintPicker.Paint.Enums
     public enum PaintLocationEnum
     {
         Indoor,
-        Outdoor,
-        ForWetRooms,
-        ForDryRooms
+        Outdoor
     }
 
     public static class PaintLocation 
     {
+
+        public static bool CheckPaintLocation(PaintClass paint, PaintLocationEnum paintLocation)
+        {
+            foreach (PaintLocationEnum locationEnum in paint.Locations)
+            {
+                if (locationEnum == paintLocation)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
         public static string GetPaintLocationString(PaintLocationEnum location) 
         {
             switch (location) 
             {
                 case PaintLocationEnum.Indoor: return "Внутри помещений";
                 case PaintLocationEnum.Outdoor: return "Снаружи помещений";
-                case PaintLocationEnum.ForWetRooms: return "Для влажных помещений";
-                case PaintLocationEnum.ForDryRooms: return "Для сухих помещений";
                 default: return "Не найдено";
             }
         }

@@ -23,8 +23,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Consumption = 10,
                         Materials = new List<PaintMaterialEnum> { PaintMaterialEnum.Plasterboard, PaintMaterialEnum.Concrete, PaintMaterialEnum.Brick, PaintMaterialEnum.PlasteredSurface, PaintMaterialEnum.Wood},
                         Gloss = new List<PaintGlossEnum> { PaintGlossEnum.FullMatt},
-                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.Walls, PaintObjectEnum.Ceilings },
-                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
+                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.WallsInDryRooms, PaintObjectEnum.CeilingsInDryRooms },
+                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor},
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
                         Categories = new List<CategoryEnums> {
@@ -42,8 +42,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Consumption = 10,
                         Materials = new List<PaintMaterialEnum> { PaintMaterialEnum.Plasterboard, PaintMaterialEnum.Concrete, PaintMaterialEnum.Brick, PaintMaterialEnum.PlasteredSurface, PaintMaterialEnum.Wood },
                         Gloss = new List<PaintGlossEnum> { PaintGlossEnum.Matt },
-                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.Walls, PaintObjectEnum.Ceilings },
-                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
+                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.WallsInDryRooms, PaintObjectEnum.CeilingsInDryRooms },
+                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor},
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
                         Categories = new List<CategoryEnums> {
@@ -62,8 +62,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Consumption = 8,
                         Materials = new List<PaintMaterialEnum> { PaintMaterialEnum.Plasterboard, PaintMaterialEnum.Concrete, PaintMaterialEnum.Brick, PaintMaterialEnum.PlasteredSurface, PaintMaterialEnum.Wood },
                         Gloss = new List<PaintGlossEnum> { PaintGlossEnum.Matt, PaintGlossEnum.SemiMatte, PaintGlossEnum.SemiGloss },
-                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.Walls, PaintObjectEnum.Ceilings },
-                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
+                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.WallsInDryRooms, PaintObjectEnum.WallsInWetRooms, PaintObjectEnum.CeilingsInDryRooms, PaintObjectEnum.CeilingsInWetRooms },
+                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor},
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
                         Categories = new List<CategoryEnums> {
@@ -83,8 +83,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         Consumption = 8,
                         Materials = new List<PaintMaterialEnum> { PaintMaterialEnum.Ceramic },
                         Gloss = new List<PaintGlossEnum> { PaintGlossEnum.SemiMatte},
-                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.Walls, PaintObjectEnum.Ceilings, PaintObjectEnum.Floors },
-                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor, PaintLocationEnum.ForWetRooms },
+                        Objects = new List<PaintObjectEnum> { PaintObjectEnum.WallsInDryRooms, PaintObjectEnum.WallsInWetRooms, PaintObjectEnum.CeilingsInDryRooms, PaintObjectEnum.CeilingsInWetRooms, PaintObjectEnum.Floors },
+                        Locations = new List<PaintLocationEnum> { PaintLocationEnum.Indoor},
                         Thinner = PaintThinnerEnum.Water,
                         Colors = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White },
                         Categories = new List<CategoryEnums> {

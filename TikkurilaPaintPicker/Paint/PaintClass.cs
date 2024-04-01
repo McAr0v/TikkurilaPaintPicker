@@ -12,16 +12,16 @@ namespace TikkurilaPaintPicker.Paint
 {
     public class PaintClass
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Consumption { get; set; }
-        public List<PaintMaterialEnum> Materials { get; set; }
-        public List<PaintObjectEnum> Objects { get; set; }
-        public List<PaintLocationEnum> Locations { get; set; }
-        public PaintThinnerEnum Thinner { get; set; }
-        public List<PaintColorEnum> Colors {  get; set; }
-        public List<PaintGlossEnum> Gloss { get; set; }
-        public List<CategoryEnums> Categories { get; set; }
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public int Consumption { get; set; } = 0;
+        public List<PaintMaterialEnum> Materials { get; set; } = new List<PaintMaterialEnum>();
+        public List<PaintObjectEnum> Objects { get; set; } = new List<PaintObjectEnum>();
+        public List<PaintLocationEnum> Locations { get; set; } = new List<PaintLocationEnum>();
+        public PaintThinnerEnum Thinner { get; set; } = PaintThinnerEnum.NotChosen;
+        public List<PaintColorEnum> Colors { get; set; } = new List<PaintColorEnum>();
+        public List<PaintGlossEnum> Gloss { get; set; } = new List<PaintGlossEnum>();
+        public List<CategoryEnums> Categories { get; set; } = new List<CategoryEnums>();
 
         public static PaintClass GetEmptyPaint() 
         {
@@ -316,6 +316,33 @@ namespace TikkurilaPaintPicker.Paint
             return stack;
 
 
+        }
+
+        public bool CheckLocations() 
+        {
+            return Locations.Count > 0;
+        }
+
+        public bool CheckObjects()
+        {
+            return Objects.Count > 0;
+        }
+
+        public bool CheckMaterials()
+        {
+            return Materials.Count > 0;
+        }
+        public bool CheckColors()
+        {
+            return Colors.Count > 0;
+        }
+        public bool CheckThinner()
+        {
+            return Thinner != PaintThinnerEnum.NotChosen;
+        }
+        public bool CheckGloss()
+        {
+            return Gloss.Count > 0;
         }
 
     }

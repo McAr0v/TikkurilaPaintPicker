@@ -11,12 +11,26 @@ namespace TikkurilaPaintPicker.Paint.Enums
         LightShades,
         DarkShades,
         White,
-        Blue,
-        Red
+        NoColor
     }
 
     public static class PaintColor
     {
+
+        public static bool CheckPaintColor(PaintClass paint, PaintColorEnum paintColor)
+        {
+            foreach (PaintColorEnum paintColorEnum in paint.Colors)
+            {
+                if (paintColorEnum == paintColor)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
         public static string GetPaintColorName(PaintColorEnum color)
         {
             switch (color) 
@@ -24,8 +38,19 @@ namespace TikkurilaPaintPicker.Paint.Enums
                 case PaintColorEnum.LightShades: return "Колеровка в светлые оттенки";
                 case PaintColorEnum.DarkShades: return "Колеровка в темные оттенки";
                 case PaintColorEnum.White: return "Белый";
-                case PaintColorEnum.Blue: return "Синий";
-                case PaintColorEnum.Red: return "Красный";
+                case PaintColorEnum.NoColor: return "Прозрачный цвет или колеровка в полупрозрачный древесный оттенок";
+                default: return "Цвет не найден";
+            }
+        }
+
+        public static string GetPaintColorAnswer(PaintColorEnum color)
+        {
+            switch (color)
+            {
+                case PaintColorEnum.LightShades: return "Нужна краска светлого оттенка";
+                case PaintColorEnum.DarkShades: return "Нужна краска темного или яркого оттенка";
+                case PaintColorEnum.White: return "Нужна белая краска";
+                case PaintColorEnum.NoColor: return "Нужен лак/пропитка прозрачного или древесного оттенка";
                 default: return "Цвет не найден";
             }
         }

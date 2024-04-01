@@ -19,7 +19,19 @@ public partial class CatalogScreen : ContentPage
 
     ScrollView scrollView = new ScrollView();
 
-    
+    // Переопределяем функцию на нажатие кнопки назад
+    // Для того, чтобы при переходе с пикера красок на этот экран
+    // человек возвращался на главную страницу, а не в стак экранов
+
+    protected override bool OnBackButtonPressed()
+    {
+        // Ваша функция для обработки нажатия кнопки "назад"
+        // Например, переход на предыдущую страницу в стеке навигации
+        Navigation.PopToRootAsync();
+
+        // Возвращаем true, чтобы предотвратить выполнение стандартного обработчика
+        return true;
+    }
 
     public CatalogScreen()
 	{

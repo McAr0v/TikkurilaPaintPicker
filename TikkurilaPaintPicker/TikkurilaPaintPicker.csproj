@@ -119,6 +119,9 @@
 	  <Compile Update="Design\Screens\CatalogScreens\LackuersScreen.xaml.cs">
 	    <DependentUpon>LackuersScreen.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Design\Screens\PaintPickerScreens\LayersPages.xaml.cs">
+	    <DependentUpon>LayersPages.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -146,10 +149,13 @@
 	  <MauiXaml Update="Design\Screens\MainScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\PaintPickerScreens\LocationLayer.xaml">
+	  <MauiXaml Update="Design\Screens\PaintPickerScreens\LayersPages.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\PaintPickerScreens\ObjectsLayer.xaml">
+	  <MauiXaml Update="Design\Screens\PaintPickerScreens\PickerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Design\Screens\PaintPickerScreens\PickerResultPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Design\Screens\PaintsScreens\PaintListScreen.xaml">

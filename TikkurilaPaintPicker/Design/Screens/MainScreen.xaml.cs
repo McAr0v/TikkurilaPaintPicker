@@ -94,7 +94,7 @@ public partial class MainScreen : ContentPage
     private async Task NavigateToPickerPage()
     {
 
-        await Navigation.PushAsync(new LocationLayer());
+        await Navigation.PushAsync(new PickerPage());
 
     }
 }

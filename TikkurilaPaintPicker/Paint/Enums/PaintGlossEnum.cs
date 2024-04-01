@@ -18,6 +18,36 @@ namespace TikkurilaPaintPicker.Paint.Enums
 
     public static class PaintGloss 
     {
+
+        public static bool CheckPaintGloss(PaintClass paint, PaintGlossEnum paintGloss)
+        {
+            foreach (PaintGlossEnum paintGlossEnum in paint.Gloss)
+            {
+                if (paintGloss == PaintGlossEnum.Matt) 
+                {
+                    return CheckMattGloss(paintGlossEnum);
+                } 
+                else
+                {
+                    return CheckNotMattGloss(paintGlossEnum);
+                }
+
+            }
+
+            return false;
+
+        }
+
+        public static bool CheckMattGloss(PaintGlossEnum paintGloss)
+        {
+            return paintGloss == PaintGlossEnum.FullMatt || paintGloss == PaintGlossEnum.Matt || paintGloss == PaintGlossEnum.SemiMatte;
+        }
+
+        public static bool CheckNotMattGloss(PaintGlossEnum paintGloss)
+        {
+            return paintGloss == PaintGlossEnum.SemiGloss || paintGloss == PaintGlossEnum.Gloss || paintGloss == PaintGlossEnum.FullGloss;
+        }
+
         public static string GetGlossName(PaintGlossEnum gloss) 
         {
             switch (gloss) 

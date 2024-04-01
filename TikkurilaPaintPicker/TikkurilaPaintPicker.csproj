@@ -47,7 +47,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -57,55 +56,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\CategoriesImages\exterier_paint.png" />
-	  <None Remove="Resources\Images\CategoriesImages\FassadePaints\mineral_fassade.png" />
-	  <None Remove="Resources\Images\CategoriesImages\FassadePaints\wooden_fassade.png" />
-	  <None Remove="Resources\Images\CategoriesImages\lackuer.png" />
-	  <None Remove="Resources\Images\CategoriesImages\LackuerPaints\for_floor.png" />
-	  <None Remove="Resources\Images\CategoriesImages\LackuerPaints\for_furniture.png" />
-	  <None Remove="Resources\Images\CategoriesImages\LackuerPaints\for_walls.png" />
-	  <None Remove="Resources\Images\CategoriesImages\maailn.png" />
-	  <None Remove="Resources\Images\CategoriesImages\primers.png" />
-	  <None Remove="Resources\Images\CategoriesImages\Primers\metal.png" />
-	  <None Remove="Resources\Images\CategoriesImages\Primers\mineral.png" />
-	  <None Remove="Resources\Images\CategoriesImages\Primers\plast.png" />
-	  <None Remove="Resources\Images\CategoriesImages\Primers\wood.png" />
-	  <None Remove="Resources\Images\CategoriesImages\septik.png" />
-	  <None Remove="Resources\Images\CategoriesImages\thinners.png" />
-	  <None Remove="Resources\Images\CategoriesImages\wash_products.png" />
-	  <None Remove="Resources\Images\CategoriesImages\WaterPaints\for_dry_rooms.png" />
-	  <None Remove="Resources\Images\CategoriesImages\WaterPaints\for_wet_rooms.png" />
-	  <None Remove="Resources\Images\CategoriesImages\water_paints.png" />
-	  <None Remove="Resources\Images\CategoriesImages\WoodOilsPaints\inside.png" />
-	  <None Remove="Resources\Images\CategoriesImages\WoodOilsPaints\outside.png" />
-	  <None Remove="Resources\Images\CategoriesImages\WoodOilsPaints\sauna.png" />
 	  <None Remove="Resources\Images\PaintImages\Harmony.png" />
 	  <None Remove="Resources\Images\tikkurila_logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\CategoriesImages\exterier_paint.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\FassadePaints\mineral_fassade.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\FassadePaints\wooden_fassade.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\lackuer.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\LackuerPaints\for_floor.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\LackuerPaints\for_furniture.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\LackuerPaints\for_walls.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\maailn.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\primers.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\Primers\metal.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\Primers\mineral.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\Primers\plast.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\Primers\wood.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\septik.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\thinners.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\wash_products.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\WaterPaints\for_dry_rooms.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\WaterPaints\for_wet_rooms.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\water_paints.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\WoodOilsPaints\inside.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\WoodOilsPaints\outside.png" />
-	  <MauiImage Include="Resources\Images\CategoriesImages\WoodOilsPaints\sauna.png" />
 	  <MauiImage Include="Resources\Images\PaintImages\harmony.png" />
 	</ItemGroup>
 
@@ -116,9 +71,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Design\Screens\CatalogScreens\LackuersScreen.xaml.cs">
-	    <DependentUpon>LackuersScreen.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Design\Screens\PaintPickerScreens\LayersPages.xaml.cs">
 	    <DependentUpon>LayersPages.xaml</DependentUpon>
 	  </Compile>
@@ -129,21 +81,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Design\Screens\CatalogScreens\CategoryPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\CatalogScreens\FasadePaintsScreen.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\CatalogScreens\LackuersScreen.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\CatalogScreens\PrimersScreen.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\CatalogScreens\WaterBornPaintsScreens\WaterBornPaints.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\CatalogScreens\WoodOilsScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Design\Screens\MainScreen.xaml">
@@ -158,19 +95,9 @@
 	  <MauiXaml Update="Design\Screens\PaintPickerScreens\PickerResultPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Design\Screens\PaintsScreens\PaintListScreen.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Design\Screens\PaintsScreens\PaintViewScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="SecondPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Design\Screens\CatalogScreens\MetalPaintsScreens\" />
 	</ItemGroup>
 
 </Project>

@@ -21,15 +21,18 @@ namespace TikkurilaPaintPicker.Paint.Enums
 
         public static bool CheckPaintGloss(PaintClass paint, PaintGlossEnum paintGloss)
         {
+
             foreach (PaintGlossEnum paintGlossEnum in paint.Gloss)
             {
                 if (paintGloss == PaintGlossEnum.Matt) 
                 {
-                    return CheckMattGloss(paintGlossEnum);
+                    bool tempResult = CheckMattGloss(paintGlossEnum);
+                    if (tempResult) { return tempResult; }
                 } 
-                else
+                else 
                 {
-                    return CheckNotMattGloss(paintGlossEnum);
+                    bool tempResult = CheckNotMattGloss(paintGlossEnum);
+                    if (tempResult) { return tempResult; }
                 }
 
             }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
+using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers;
 using TikkurilaPaintPicker.Paint.Enums;
 using static TikkurilaPaintPicker.Design.Screens.PaintsScreens.PaintViewScreen;
 
@@ -343,6 +345,77 @@ namespace TikkurilaPaintPicker.Paint
         public bool CheckGloss()
         {
             return Gloss.Count > 0;
+        }
+
+        public Frame GetAllAnswers()
+        {
+            string waterbornText = Thinner == PaintThinnerEnum.Solvent1050 ? "Не обязательно" : "Да";
+
+            StackLayout result = new StackLayout();
+
+            Label headline = CustomTextWidget.CustomText(
+                text: $"Ваши ответы:",
+                textColor: CustomColors.Black,
+                textState: TextState.HeadlineSmall
+                );
+
+            headline.Margin = new Thickness(0, 0, 0, 10);
+
+            Label location = CustomTextWidget.CustomText(
+                text: $"{PaintLayer.GetHeadline(layer: PaintLayerEnum.LocationEnum)} - {PaintLocation.GetPaintLocationString(Locations[0])}",
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium
+                );
+
+            Label materials = CustomTextWidget.CustomText(
+                text: $"{PaintLayer.GetHeadline(layer: PaintLayerEnum.MaterialEnum)} - {PaintMaterial.GetPaintMaterialName(Materials[0])}",
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium
+                );
+
+            Label objects = CustomTextWidget.CustomText(
+                text: $"{PaintLayer.GetHeadline(layer: PaintLayerEnum.ObjectEnum)} - {PaintObject.GetPaintObjectName(Objects[0])}",
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium
+                );
+
+            Label colors = CustomTextWidget.CustomText(
+                text: $"{PaintLayer.GetHeadline(layer: PaintLayerEnum.ColorsEnum)} - {PaintColor.GetPaintColorAnswer(Colors[0])}",
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium
+                );
+
+            Label gloss = CustomTextWidget.CustomText(
+                text: $"{PaintLayer.GetHeadline(layer: PaintLayerEnum.GlossEnum)} - {PaintGloss.GetGlossName(Gloss[0])}",
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium
+                );
+
+            Label waterborn = CustomTextWidget.CustomText(
+                text: $"{PaintLayer.GetHeadline(layer: PaintLayerEnum.WaterbornEnum)} - {waterbornText}",
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium
+                );
+
+            result.Add(headline);
+            result.Add(location);
+            result.Add(materials);
+            result.Add(objects);
+            result.Add(colors);
+            result.Add(gloss);
+            result.Add(waterborn);
+
+            Frame frame = new Frame
+            {
+                Content = result,
+                HasShadow = true,
+                BackgroundColor = CustomColors.White,
+                Padding = new Thickness(20),
+                CornerRadius = 10
+            };
+
+            return frame;
+
         }
 
     }

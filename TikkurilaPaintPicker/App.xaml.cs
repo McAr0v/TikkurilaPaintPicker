@@ -12,7 +12,6 @@ namespace TikkurilaPaintPicker
 
             MainPage = new NavigationPage(new MainScreen()) 
             {
-                //BarBackgroundColor = Colors.LightGray,
                 BarTextColor = Colors.Black,
             };
 

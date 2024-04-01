@@ -83,7 +83,7 @@ public partial class PaintViewScreen : ContentPage
             {
                 new Image
                 {
-                    Source = $"Images/PaintImages/{paint.Name}.png",
+                    Source = $"Images/PaintImages/{paint.GenerateImageName()}.png",
                     Aspect = Aspect.AspectFit,
                     HeightRequest = 300,
                 },

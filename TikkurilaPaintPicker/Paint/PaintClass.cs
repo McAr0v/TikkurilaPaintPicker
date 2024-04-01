@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers;
@@ -25,6 +26,11 @@ namespace TikkurilaPaintPicker.Paint
         public List<PaintGlossEnum> Gloss { get; set; } = new List<PaintGlossEnum>();
         public List<CategoryEnums> Categories { get; set; } = new List<CategoryEnums>();
 
+        public string GenerateImageName() 
+        {
+            string name = Name;
+            return name.Replace(" ", "_").ToLower();
+        }
         public static PaintClass GetEmptyPaint() 
         {
             return new PaintClass()

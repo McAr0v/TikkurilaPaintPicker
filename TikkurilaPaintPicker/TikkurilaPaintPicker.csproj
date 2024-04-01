@@ -57,11 +57,17 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\PaintImages\Harmony.png" />
+	  <None Remove="Resources\Images\PaintImages\joker.jpg" />
+	  <None Remove="Resources\Images\PaintImages\luja.jpg" />
+	  <None Remove="Resources\Images\PaintImages\luja_ceramic_tiles.jpg" />
 	  <None Remove="Resources\Images\tikkurila_logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiImage Include="Resources\Images\PaintImages\harmony.png" />
+	  <MauiImage Include="Resources\Images\PaintImages\joker.jpg" />
+	  <MauiImage Include="Resources\Images\PaintImages\luja.jpg" />
+	  <MauiImage Include="Resources\Images\PaintImages\luja_ceramic_tiles.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -2,6 +2,7 @@ using Microsoft.Maui.Graphics;
 using System.Data.Common;
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
+using TikkurilaPaintPicker.Design.PaintWidgets;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 using TikkurilaPaintPicker.Paint;
 using TikkurilaPaintPicker.Paint.Enums;
@@ -60,7 +61,23 @@ public partial class CategoryPage : ContentPage
 
         //AddPaints();
 
-        AddPaintsTwo();
+        //AddPaintsTwo();
+
+        foreach(PaintClass childPaint in paints)
+        {
+            stackLayout.Add(PaintItemInList.PaintItemWidgetInList(
+                paint: childPaint,
+                categoryAction: async () =>
+                {
+                    await Navigation.PushAsync(new CategoryPage(childPaint.Categories[0], CategoryTranslator.GetCategoriesList(childPaint.Categories[0])));
+                },
+                paintAction: async () =>
+                {
+                    await NavigateToPaintPage(childPaint);
+                }
+                )
+                );
+        }
 
         scrollView.Content = stackLayout;
 
@@ -99,6 +116,8 @@ public partial class CategoryPage : ContentPage
         }
     }
 
+    
+
     private void AddPaintsTwo()
     {
         foreach(PaintClass paint in paints)
@@ -123,7 +142,7 @@ public partial class CategoryPage : ContentPage
 
             Image image = new Image
             {
-                Source = $"Images/PaintImages/{paint.Name}.png",
+                Source = $"Images/PaintImages/{paint.GenerateImageName()}.png",
                 Aspect = Aspect.AspectFill,
             };
 
@@ -140,6 +159,23 @@ public partial class CategoryPage : ContentPage
                 textState: TextState.DescMedium,
                 horizontalAligment: TextAlignment.Start
             );
+
+            Label paintCategory = CustomTextWidget.CustomText(
+                text: CategoryTranslator.Translate(paint.Categories[0]),
+                textColor: CustomColors.Black,
+                textState: TextState.DescMedium,
+                horizontalAligment: TextAlignment.Start,
+                underline: TextDecorations.Underline
+            );
+
+            paintCategory.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    await Navigation.PushAsync(new CategoryPage(paint.Categories[0], CategoryTranslator.GetCategoriesList(paint.Categories[0])));
+
+                })
+            });
 
             Label textButton = CustomTextWidget.CustomText(
                 text: "Подробнее",
@@ -158,6 +194,7 @@ public partial class CategoryPage : ContentPage
 
             stack.Children.Add(label);
             stack.Children.Add(paintDesc);
+            stack.Children.Add(paintCategory);
             stack.Children.Add(textButton);
 
             grid.Add(image, 0, 0);

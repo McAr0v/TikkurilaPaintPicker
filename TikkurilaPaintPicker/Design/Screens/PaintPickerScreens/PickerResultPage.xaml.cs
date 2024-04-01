@@ -121,7 +121,7 @@ public partial class PickerResultPage : ContentPage
 
             Image image = new Image
             {
-                Source = $"Images/PaintImages/{paint.Name}.png",
+                Source = $"Images/PaintImages/{paint.GenerateImageName()}.png",
                 Aspect = Aspect.AspectFill,
             };
 

@@ -61,6 +61,12 @@
 	  <None Remove="Resources\Images\PaintImages\luja.jpg" />
 	  <None Remove="Resources\Images\PaintImages\luja_ceramic_tiles.jpg" />
 	  <None Remove="Resources\Images\paint_picker.png" />
+	  <None Remove="Resources\Images\PickerStepsImages\fifth_step.png" />
+	  <None Remove="Resources\Images\PickerStepsImages\first_step.png" />
+	  <None Remove="Resources\Images\PickerStepsImages\fourth_step.png" />
+	  <None Remove="Resources\Images\PickerStepsImages\second_step.png" />
+	  <None Remove="Resources\Images\PickerStepsImages\sixth_step.png" />
+	  <None Remove="Resources\Images\PickerStepsImages\third_step.png" />
 	  <None Remove="Resources\Images\tikkurila_logo.png" />
 	  <None Remove="Resources\Images\tikkurila_paints.png" />
 	</ItemGroup>
@@ -70,6 +76,12 @@
 	  <MauiImage Include="Resources\Images\PaintImages\joker.jpg" />
 	  <MauiImage Include="Resources\Images\PaintImages\luja.jpg" />
 	  <MauiImage Include="Resources\Images\PaintImages\luja_ceramic_tiles.jpg" />
+	  <MauiImage Include="Resources\Images\PickerStepsImages\fifth_step.png" />
+	  <MauiImage Include="Resources\Images\PickerStepsImages\first_step.png" />
+	  <MauiImage Include="Resources\Images\PickerStepsImages\fourth_step.png" />
+	  <MauiImage Include="Resources\Images\PickerStepsImages\second_step.png" />
+	  <MauiImage Include="Resources\Images\PickerStepsImages\sixth_step.png" />
+	  <MauiImage Include="Resources\Images\PickerStepsImages\third_step.png" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -19,7 +19,13 @@ public partial class LayerPages: ContentPage
 
     // Прокручиваемая разметка, на случай, если содержимое не будет влазить в размеры экрана
     ScrollView primaryScrollForPage = new ScrollView();
-    
+
+    Image layerImage = new Image
+    {
+        Aspect = Aspect.AspectFit,
+        HorizontalOptions = LayoutOptions.Center,
+    };
+
 
     // Кнопки
     Button nextButton = CustomWidgets.CustomButton
@@ -71,6 +77,10 @@ public partial class LayerPages: ContentPage
         buttonsGrid.Add(previousButton, 0, 0);
         buttonsGrid.Add(nextButton, 1, 0);
 
+        layerImage.Source = $"Images/PickerStepsImages/{GenerateImagePath(layer)}.png";
+
+        pageStack.Add(layerImage);
+
         // ----- РАДИО-КНОПКИ ----
 
         GenerateAnswersWidget(layer);
@@ -98,6 +108,38 @@ public partial class LayerPages: ContentPage
         Content = primaryScrollForPage;
 
 	}
+
+    private string GenerateImagePath(PaintLayerEnum layer)
+    {
+        switch (layer)
+        {
+            case PaintLayerEnum.ObjectEnum:
+                {
+                    return "second_step";
+                }
+            case PaintLayerEnum.LocationEnum:
+                {
+                    return "first_step";
+                }
+            case PaintLayerEnum.MaterialEnum:
+                {
+                    return "third_step";
+                }
+            case PaintLayerEnum.ColorsEnum:
+                {
+                    return "fourth_step";
+                }
+            case PaintLayerEnum.GlossEnum:
+                {
+                    return "fifth_step";
+                }
+            case PaintLayerEnum.WaterbornEnum:
+                {
+                    return "sixth_step";
+                }
+            default: return "";
+        }
+    }
 
     /// <summary>
     /// Функция очистки элементов краски, в зависимости от 

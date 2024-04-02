@@ -1,4 +1,3 @@
-
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.PaintWidgets;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
@@ -40,7 +39,7 @@ public partial class PickerResultPage : ContentPage
         // Добавляем виджет с ответами на вопросы в пикере
         pageStack.Add(paint.GetAllAnswers());
 
-
+        // Добавляем все краски в отдельный стак красок
         if (paintsResultList.Count > 0) 
         {
             pageStack.Add
@@ -55,12 +54,12 @@ public partial class PickerResultPage : ContentPage
 
             AddAllPaints();
         }
+        // Или выводим надпись, что красок не найдено
         else
         {
             WidgetForEmptyList();
         }
 
-        // Добавляем в стак страницы краски или текст что красок не найдено
         pageStack.Add(paintsStack);
 
         // Добавляем встак страницы кнопки
@@ -79,6 +78,12 @@ public partial class PickerResultPage : ContentPage
 
     }
 
+    /// <summary>
+    /// Функция получения правильного склонения слова "Краска", в зависимости
+    /// от количества найденых красок
+    /// </summary>
+    /// <param name="count"></param>
+    /// <returns></returns>
     private string GetCountPaintString(int count) 
     {
         // Для чисел, оканчивающихся на 11, 12, 13 и 14, всегда используем форму "красок"
@@ -101,6 +106,9 @@ public partial class PickerResultPage : ContentPage
         }
     }
 
+    /// <summary>
+    /// Функция добавления в стак красок всех красок из списка
+    /// </summary>
     private void AddAllPaints()
     {
         // Для каждой краски из списка генерируем виджет 
@@ -112,7 +120,7 @@ public partial class PickerResultPage : ContentPage
                 paint: childPaint,
                 categoryAction: async () =>
                 {
-                    await Navigation.PushAsync(new CategoryPage(childPaint.Categories[0], CategoryTranslator.GetCategoriesList(childPaint.Categories[0])));
+                    await Navigation.PushAsync(new CategoryPage(childPaint.Categories[0], CategoryClass.GetChildrenCategoriesList(childPaint.Categories[0])));
                 },
                 paintAction: async () =>
                 {
@@ -123,6 +131,10 @@ public partial class PickerResultPage : ContentPage
         }
     }
 
+    /// <summary>
+    /// Функция добавления в стак красок надписи, что краски не найдены, если список
+    /// красок пуст
+    /// </summary>
     private void WidgetForEmptyList() 
     {
         Label label = CustomWidgets.CustomText(

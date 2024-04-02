@@ -1,27 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TikkurilaPaintPicker.Paint;
+﻿using TikkurilaPaintPicker.Paint;
 
 namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers
 {
 
+    /// <summary>
+    /// enum'ы для PaintPicker'а. Определяют, какой вопрос отображать
+    /// на текущем экране
+    /// </summary>
     public enum PaintLayerEnum
     {
-        NotChosen,
-        LocationEnum,
-        ObjectEnum,
-        MaterialEnum,
-        ColorsEnum,
-        GlossEnum,
-        WaterbornEnum,
-        Finish
+        NotChosen,     // Не выбрано
+        LocationEnum,  // Локация
+        ObjectEnum,    // Объекты
+        MaterialEnum,  // Материалы
+        ColorsEnum,    // Цвета
+        GlossEnum,     // Блеск
+        WaterbornEnum, // Разбавитель
+        Finish         // Завершающий этап
     }
+
+    /// <summary>
+    /// Класс для хранения функций, связынных с 
+    /// enum PaintLayerEnum
+    /// </summary>
     public static class PaintLayer
     {
-        public static string GetHeadline(PaintLayerEnum layer)
+
+        /// <summary>
+        /// Функция получения вопроса для PaintPicker'а
+        /// в зависимости от переданного enum
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        public static string GetAnswer(PaintLayerEnum layer)
         {
             switch (layer) 
             {
@@ -35,6 +46,12 @@ namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers
             }
         }
 
+        /// <summary>
+        /// Функция получения заголовка страницы PaintPicker'а
+        /// в зависимости от переданного enum
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
         public static string GetPageHeadline(PaintLayerEnum layer)
         {
             string result = "Подборщик красок - ";
@@ -80,6 +97,11 @@ namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers
             return result;
         }
 
+        /// <summary>
+        /// Функция для получения enum следующего экрана в PaintPicker
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
         public static PaintLayerEnum GetNextPage(PaintLayerEnum layer)
         {
             switch (layer)
@@ -94,6 +116,13 @@ namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers
             }
         }
 
+        /// <summary>
+        /// Функция проверки - выбрал ли пользователь 
+        /// какой либо ответ на странице PaintPicker'а.
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <param name="paint"></param>
+        /// <returns></returns>
         public static bool CheckAnswer(PaintLayerEnum layer, PaintClass paint)
         {
             switch (layer)
@@ -109,7 +138,4 @@ namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers
         }
 
     }
-
-    
-
 }

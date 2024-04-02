@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Paint.Enums
+﻿namespace TikkurilaPaintPicker.Paint.Enums
 {
+    /// <summary>
+    /// enum для отображения категорий красок
+    /// </summary>
     public enum CategoryEnums
     {
         FacadePaints,
@@ -39,8 +36,16 @@ namespace TikkurilaPaintPicker.Paint.Enums
         CleaningAgentsAndAdditives
     }
 
-    public static class CategoryTranslator
+    /// <summary>
+    /// Класс, хранящий функции для категорий
+    /// </summary>
+    public static class CategoryClass
     {
+        /// <summary>
+        /// Функция перевода enum'а категории на русский язык
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public static string Translate(CategoryEnums category)
         {
             switch (category)
@@ -108,6 +113,11 @@ namespace TikkurilaPaintPicker.Paint.Enums
             }
         }
 
+        /// <summary>
+        /// Функция  получения описания категории
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public static string GetDescription(CategoryEnums category)
         {
             switch (category)
@@ -175,7 +185,12 @@ namespace TikkurilaPaintPicker.Paint.Enums
             }
         }
 
-        public static List<CategoryEnums> GetCategoriesList(CategoryEnums category)
+        /// <summary>
+        /// Функция получения дочерних категорий в основных категориях
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public static List<CategoryEnums> GetChildrenCategoriesList(CategoryEnums category)
         {
             switch (category)
             {

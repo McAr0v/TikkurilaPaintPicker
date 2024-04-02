@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TikkurilaPaintPicker.Design.Colors;
+﻿using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 
 namespace TikkurilaPaintPicker.Design.Widgets
 {
+    /// <summary>
+    /// Класс для хранения кастомных виджетов
+    /// </summary>
     public static class CustomWidgets
     {
+        /// <summary>
+        /// Виджет кастомной кнопки
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="buttonState"></param>
+        /// <returns></returns>
         public static Button CustomButton(string text, ButtonState buttonState)
         {
             return new Button() 
@@ -19,6 +23,17 @@ namespace TikkurilaPaintPicker.Design.Widgets
                 TextColor = SwitchButtonTextColor(buttonState)
             };
         }
+
+        /// <summary>
+        /// Виджет кастомного текста
+        /// </summary>
+        /// <param name="text">Отображаемый текст</param>
+        /// <param name="textColor">Цвет текста</param>
+        /// <param name="textState">Определяет стиль текста - заголовок, обычный текст, подпись</param>
+        /// <param name="underline">Подчеркивание текста</param>
+        /// <param name="horizontalAligment">Выравнивание по горизонтали</param>
+        /// <param name="padding">Отступы</param>
+        /// <returns></returns>
 
         public static Label CustomText(
             string text,
@@ -41,6 +56,12 @@ namespace TikkurilaPaintPicker.Design.Widgets
             };
         }
 
+        /// <summary>
+        /// Функция для получения веса шрифта в зависимости от 
+        /// типа текста - заголовок, обычный текст, подпись
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
         private static FontAttributes GetFontWeight(TextState state)
         {
             switch (state)
@@ -54,6 +75,12 @@ namespace TikkurilaPaintPicker.Design.Widgets
             }
         }
 
+        /// <summary>
+        /// Функция для получения размера шрифта в зависимости
+        /// от типа текста
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
         private static double GetFontSize(TextState state)
         {
             switch (state)
@@ -81,6 +108,11 @@ namespace TikkurilaPaintPicker.Design.Widgets
             }
         }
 
+        /// <summary>
+        /// Функция для отрисовки виджета Радио-кнопки
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static RadioButton CustomRadioButton(string text)
         {
             return new RadioButton
@@ -94,6 +126,12 @@ namespace TikkurilaPaintPicker.Design.Widgets
             };
         }
 
+        /// <summary>
+        /// Функция получения цвета кнопки в зависимости
+        /// от состояния кнопки
+        /// </summary>
+        /// <param name="buttonState"></param>
+        /// <returns></returns>
         private static Color SwitchButtonColor(ButtonState buttonState)
         {
             switch (buttonState) 
@@ -104,6 +142,12 @@ namespace TikkurilaPaintPicker.Design.Widgets
             }
         }
 
+        /// <summary>
+        /// Функция получения цвета текста кнопки в зависимости
+        /// от состояния кнопки
+        /// </summary>
+        /// <param name="buttonState"></param>
+        /// <returns></returns>
         private static Color SwitchButtonTextColor(ButtonState buttonState)
         {
             switch (buttonState)

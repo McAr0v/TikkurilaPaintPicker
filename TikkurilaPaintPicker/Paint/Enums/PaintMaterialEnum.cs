@@ -1,28 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Paint.Enums
+﻿namespace TikkurilaPaintPicker.Paint.Enums
 {
+
+    /// <summary>
+    /// enum, хранящий виды окрашиваемых материалов 
+    /// </summary>
     public enum PaintMaterialEnum
     {
-        Wood, // Дерево
-        Metal, // Металл
-        Plastic, // Пластик
-        Plasterboard, // Гипсокартон
-        PlasteredSurface, // Оштукатуренные поверхности
-        Concrete, // Бетон
-        Brick, // Кирпич
-        Ceramic, // Керамическая плитка
-        Fiberboard, // ДВП
-        Chipboard, // ДСП
-        Osb // OSB
+        Wood,               // Дерево
+        Metal,              // Металл
+        Plastic,            // Пластик
+        Plasterboard,       // Гипсокартон
+        PlasteredSurface,   // Оштукатуренные поверхности
+        Concrete,           // Бетон
+        Brick,              // Кирпич
+        Ceramic,            // Керамическая плитка
+        Fiberboard,         // ДВП
+        Chipboard,          // ДСП
+        Osb                 // OSB
     }
 
+    /// <summary>
+    /// Класс, хранящий функции, связанные с 
+    /// окрашиваемыми материалами
+    /// </summary>
     public static class PaintMaterial 
     {
+        /// <summary>
+        /// Функция проверки - можно ли окрашивать этой краской (paint) этот материал (paintMaterial)
+        /// </summary>
+        /// <param name="paint"></param>
+        /// <param name="paintMaterial"></param>
+        /// <returns></returns>
         public static bool CheckPaintMaterial(PaintClass paint, PaintMaterialEnum paintMaterial)
         {
             foreach (PaintMaterialEnum materialEnum in paint.Materials)
@@ -36,6 +44,12 @@ namespace TikkurilaPaintPicker.Paint.Enums
             return false;
 
         }
+
+        /// <summary>
+        /// Функция получения названия материала на русском языке
+        /// </summary>
+        /// <param name="paintMaterial"></param>
+        /// <returns></returns>
         public static string GetPaintMaterialName(PaintMaterialEnum paintMaterial) 
         {
             switch (paintMaterial) 
@@ -55,6 +69,14 @@ namespace TikkurilaPaintPicker.Paint.Enums
             }
         }
 
+        /// <summary>
+        /// Функция генерации списка доступных материалов, в зависимости от локации.
+        /// Дело в том, что для строительства снаружи и внутри помещения используются
+        /// разные материалы. Именно для этого в зависимости от локации должны отображаться
+        /// только доступные материалы
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         public static List<PaintMaterialEnum> GetMaterialList(PaintLocationEnum location) 
         {
             switch (location) 

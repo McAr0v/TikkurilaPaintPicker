@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Paint.Enums
+﻿namespace TikkurilaPaintPicker.Paint.Enums
 {
+
+    /// <summary>
+    /// enum видов цветов красок
+    /// </summary>
     public enum PaintColorEnum
     {
         LightShades,
@@ -14,9 +12,18 @@ namespace TikkurilaPaintPicker.Paint.Enums
         NoColor
     }
 
+    /// <summary>
+    /// Класс, хранящий функции цветов красок
+    /// </summary>
     public static class PaintColor
     {
 
+        /// <summary>
+        /// Функция сравнения - содержит ли краска переданный цвет
+        /// </summary>
+        /// <param name="paint"></param>
+        /// <param name="paintColor"></param>
+        /// <returns></returns>
         public static bool CheckPaintColor(PaintClass paint, PaintColorEnum paintColor)
         {
             foreach (PaintColorEnum paintColorEnum in paint.Colors)
@@ -31,6 +38,12 @@ namespace TikkurilaPaintPicker.Paint.Enums
 
         }
 
+        /// <summary>
+        /// Функция получения названия цвета на русском языке
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+
         public static string GetPaintColorName(PaintColorEnum color)
         {
             switch (color) 
@@ -43,6 +56,11 @@ namespace TikkurilaPaintPicker.Paint.Enums
             }
         }
 
+        /// <summary>
+        /// Функция получения ответа о цвете в PaintPicker'е
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public static string GetPaintColorAnswer(PaintColorEnum color)
         {
             switch (color)

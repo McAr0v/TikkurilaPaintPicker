@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Paint.Enums
+﻿namespace TikkurilaPaintPicker.Paint.Enums
 {
+    /// <summary>
+    /// enum опций красок
+    /// </summary>
     public enum OptionsEnums 
     {
         PaintColors,
@@ -18,9 +15,16 @@ namespace TikkurilaPaintPicker.Paint.Enums
         PaintCategories
     }
 
-
+    /// <summary>
+    /// Класс, хранящий функции, связанные с опциями красок
+    /// </summary>
     public static class OptionsClass 
     {
+        /// <summary>
+        /// Функция получения названия enum'а на русском языке
+        /// </summary>
+        /// <param name="option"></param>
+        /// <returns></returns>
         public static string GetOptionsName(OptionsEnums option)
         {
             switch (option) 

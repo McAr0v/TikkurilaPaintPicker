@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TikkurilaPaintPicker.Paint.Enums;
+﻿using TikkurilaPaintPicker.Paint.Enums;
 
 namespace TikkurilaPaintPicker.Paint.PaintLists
 {
+    /// <summary>
+    /// Класс, хранящий в себе список водоэмульсионных красок
+    /// </summary>
     public class WaterEmulsionPaints
     {
         public List<PaintClass> WaterEmulsionPaintList { get; private set; }
@@ -14,7 +12,11 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
         public WaterEmulsionPaints()
         {
             WaterEmulsionPaintList = new List<PaintClass>();
-            // Здесь вы можете добавить краски для водоэмульсионных красок
+            
+            // ДОБАВЛЯЕМ КРАСКИ
+
+            // ---- ГАРМОНИЯ -----
+
             WaterEmulsionPaintList.Add
                 (
                     new PaintClass { 
@@ -33,6 +35,9 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         }
                     }
                 );
+
+            // ---- ДЖОКЕР -----
+
             WaterEmulsionPaintList.Add
                 (
                     new PaintClass
@@ -52,6 +57,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         }
                     }
                 );
+
+            // --- ЛУЯ -----
 
             WaterEmulsionPaintList.Add
                 (
@@ -73,6 +80,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         }
                     }
                 );
+
+            // ---- ЛУЯ КЕРАМИК ТАЙЛС -----
 
             WaterEmulsionPaintList.Add
                 (

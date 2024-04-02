@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TikkurilaPaintPicker.Paint.Enums;
+﻿using TikkurilaPaintPicker.Paint.Enums;
 
 namespace TikkurilaPaintPicker.Paint.PaintLists
 {
+    /// <summary>
+    /// Класс, хранящий в себе списки красок по металлу
+    /// </summary>
     public class MetalPaints
     {
         public List<PaintClass> MetalPaintList { get; private set; }
@@ -14,7 +12,11 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
         public MetalPaints()
         {
             MetalPaintList = new List<PaintClass>();
-            // Здесь вы можете добавить краски для металлических красок
+            
+            // Добавляем краски по металлу
+
+            // ---- МИРАНОЛ -----
+
             MetalPaintList.Add
                 (
                     new PaintClass
@@ -38,6 +40,9 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                         }
                     }
                 );
+
+            // ---- УНИКА ------
+
             MetalPaintList.Add
                 (
                     new PaintClass
@@ -63,6 +68,8 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                     }
                 );
 
+            // ----- ХЭЛМИ -------
+
             MetalPaintList.Add
                 (
                     new PaintClass
@@ -84,6 +91,7 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
                     }
                 );
 
+            // ----- ПЕСТО -----
             MetalPaintList.Add
                 (
                     new PaintClass

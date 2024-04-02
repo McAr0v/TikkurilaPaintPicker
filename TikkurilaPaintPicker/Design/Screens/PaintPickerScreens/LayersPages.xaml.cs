@@ -1,5 +1,4 @@
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.PaintWidgets;
 using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers;
 using TikkurilaPaintPicker.Design.Widgets;
 using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
@@ -36,10 +35,7 @@ public partial class LayerPages: ContentPage
 
     // Контейнер для размещения кнопок в 2 колонки
 
-    Grid buttonsGrid = new Grid
-    {
-        ColumnSpacing = 20,
-    };
+    Grid buttonsGrid = new Grid{ColumnSpacing = 20};
 
     // Frame, для красивого отображения вопросов на странице
 
@@ -103,8 +99,17 @@ public partial class LayerPages: ContentPage
 
 	}
 
+    /// <summary>
+    /// Функция очистки элементов краски, в зависимости от 
+    /// текущего "круга" вопросов. Сделано для того, чтобы при возвращении
+    /// назад в PaintPicker'e не получалась такая ситуация - клиент вернулся на пару экранов,
+    /// значение в переменной краски осталось, а радио-кнопка не выбрана.
+    /// </summary>
+    /// <param name="layer"></param>
     private void ClearPaint(PaintLayerEnum layer)
     {
+        // В зависимости от круга очищаем нужный элемент
+
         switch (layer)
         {
             case PaintLayerEnum.ObjectEnum: 
@@ -134,26 +139,39 @@ public partial class LayerPages: ContentPage
         }
     }
 
+    /// <summary>
+    /// Функция генерации виджета вопроса и ответов в PaintPicker'е
+    /// </summary>
+    /// <param name="layer"></param>
     private void GenerateAnswersWidget(PaintLayerEnum layer) 
     {
         StackLayout answersStack = new StackLayout() { Spacing = 5 };
 
+        // Вопрос
+
         Label answerHeadline = CustomWidgets.CustomText
         (
-            text: PaintLayer.GetHeadline(layer),
+            text: PaintLayer.GetAnswer(layer),
             textColor: CustomColors.Black,
             textState: TextState.HeadlineMedium,
             horizontalAligment: TextAlignment.Center,
             padding: new Thickness(0, 0, 0, 20)
         );
 
-        // Генерируем кнопки и заголовок в Frame
+        // Генерируем радио-кнопки и заголовок
         answersStack.Add(answerHeadline);
         answersStack.Add(GenerateRadioButtons(layer));
+
+        // Добавляем в виджет ответов
         answerWidget.Content = answersStack;
 
     }
 
+    /// <summary>
+    /// Функция генерации радио-кнопок для каждого ответа
+    /// </summary>
+    /// <param name="layer"></param>
+    /// <returns></returns>
     private StackLayout GenerateRadioButtons(PaintLayerEnum layer) 
     {
         // ---- СПИСКИ ОТВЕТОВ ---
@@ -316,6 +334,12 @@ public partial class LayerPages: ContentPage
         return radioButtonsLayout;
     }
 
+    /// <summary>
+    /// Функция перехода на следующий экран PaintPicker'а
+    /// </summary>
+    /// <param name="paint"></param>
+    /// <param name="layer"></param>
+    /// <returns></returns>
     private async Task GoToNextScreen(PaintClass paint, PaintLayerEnum layer) 
     {
         // Если человек ответил на вопрос

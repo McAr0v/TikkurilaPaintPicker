@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Paint.Enums
+﻿namespace TikkurilaPaintPicker.Paint.Enums
 {
+    /// <summary>
+    /// enum, хранящий виды объектов для окраски
+    /// </summary>
     public enum PaintObjectEnum
     {
         Furniture,             // Мебель
@@ -24,10 +21,18 @@ namespace TikkurilaPaintPicker.Paint.Enums
     }
 
 
-
+    /// <summary>
+    /// Класс, хранящий функции, связанные с объектами для окраски
+    /// </summary>
     public static class PaintObject
     {
-
+        /// <summary>
+        /// Функция проверки - можно ли этой краской (paint)
+        /// красить этот объект или изделие (paintObject)
+        /// </summary>
+        /// <param name="paint"></param>
+        /// <param name="paintObject"></param>
+        /// <returns></returns>
         public static bool CheckPaintObject(PaintClass paint,  PaintObjectEnum paintObject)
         {
             foreach (PaintObjectEnum objectEnum in paint.Objects)
@@ -42,6 +47,11 @@ namespace TikkurilaPaintPicker.Paint.Enums
 
         }
 
+        /// <summary>
+        /// Функция получения названия объекта на русском языке
+        /// </summary>
+        /// <param name="paintObject"></param>
+        /// <returns></returns>
         public static string GetPaintObjectName(PaintObjectEnum paintObject) 
         {
             switch (paintObject)
@@ -63,6 +73,14 @@ namespace TikkurilaPaintPicker.Paint.Enums
             }
         }
 
+
+        /// <summary>
+        /// Функция генерации доступных объектов для окраски, в зависимости от локации и материалов.
+        /// Для примера - на улице не может быть бетонной двери))) Да и внутри помещения тоже XD
+        /// </summary>
+        /// <param name="paintMaterial"></param>
+        /// <param name="paintLocation"></param>
+        /// <returns></returns>
         public static List<PaintObjectEnum> GetPaintObjectList(PaintMaterialEnum paintMaterial, PaintLocationEnum paintLocation) 
         {
             // Если внутри помещения

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets
+﻿namespace TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets
 {
+    /// <summary>
+    /// enum для отображения дизайна виджета текста CutomTextWidget
+    /// </summary>
     public enum TextState
     {
         HeadlineBig,

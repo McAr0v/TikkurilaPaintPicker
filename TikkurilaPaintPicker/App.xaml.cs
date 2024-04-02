@@ -1,6 +1,5 @@
-﻿using Microsoft.Maui.Controls;
+﻿using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Screens;
-using TikkurilaPaintPicker.Paint.PaintLists;
 
 namespace TikkurilaPaintPicker
 {
@@ -10,9 +9,13 @@ namespace TikkurilaPaintPicker
         {
             InitializeComponent();
 
+            // Устанавливаем в качестве главной страницы
+            // навигационную страницу. В навигационной странице
+            // указываем MainScreen как первую страницу
+
             MainPage = new NavigationPage(new MainScreen()) 
             {
-                BarTextColor = Colors.Black,
+                BarTextColor = CustomColors.Black,
             };
 
         }

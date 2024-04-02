@@ -1,4 +1,3 @@
-using Microsoft.Maui.Graphics;
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens;
@@ -9,7 +8,17 @@ namespace TikkurilaPaintPicker.Design.Screens;
 
 public partial class MainScreen : ContentPage
 {
+    // Прокручиваемая разметка страницы
+    ScrollView pageScroll = new ScrollView();
 
+    // Основной стак элементов страницы
+    StackLayout pageStack = new StackLayout()
+    {
+        Margin = new Thickness(20),
+        Spacing = 10,
+    };
+
+    // Кнопки
     Button catalogButton = CustomWidgets.CustomButton(text: "Перейти в каталог", ButtonState.Secondary);
     Button pickerButton = CustomWidgets.CustomButton(text: "Подборщик красок", ButtonState.Primary);
 
@@ -19,6 +28,7 @@ public partial class MainScreen : ContentPage
             textState: TextState.HeadlineMedium,
             horizontalAligment: TextAlignment.Center
             );
+
     Label desc = CustomWidgets.CustomText(
             text: "Мы рады видеть Вас в нашем приложении! " +
                     "В нем вы можете ознакомиться с нашими красками. " +
@@ -28,54 +38,57 @@ public partial class MainScreen : ContentPage
             horizontalAligment: TextAlignment.Center
             );
 
-	public MainScreen()
+    Image tikkurilaLogo = new Image
+    {
+        Source = $"Images/tikkurila_logo.png",
+        Aspect = Aspect.AspectFit,
+        HeightRequest = 100,
+        HorizontalOptions = LayoutOptions.Center,
+    };
+
+    // Разметка для расположения кнопок в 2 колонки
+
+    Grid buttonsGrid = new Grid
+    {
+        ColumnSpacing = 20,
+        Margin = new Thickness(0, 20),
+    };
+
+    public MainScreen()
 	{
 		InitializeComponent();
 
         catalogButton.Clicked += async (sender, args) => await Navigation.PushAsync(new CatalogScreen());
-
         pickerButton.Clicked += async (sender, args) => await Navigation.PushAsync(new PickerPage());
 
-        Grid grid = new Grid
-        {
-            ColumnSpacing = 20,
-            Margin = new Thickness(0, 20),
-        };
+        // Добавляем кнопки в 2 колонки
 
-        grid.Add(catalogButton, 0, 0);
-        grid.Add(pickerButton, 1, 0);
+        buttonsGrid.Add(catalogButton, 0, 0);
+        buttonsGrid.Add(pickerButton, 1, 0);
 
-        Title = "Главная страница";
+        Title = "";
 
-        Content = new ScrollView
-        {
-           
-            VerticalOptions = LayoutOptions.Start,
-            HorizontalOptions = LayoutOptions.Center,
-            Content = new StackLayout
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                Margin = new Thickness(20),
-                Spacing = 10,
-                Children =
-                {
-                    new Image
-                    {
-                        Source = $"Images/tikkurila_logo.png",
-                        Aspect = Aspect.AspectFit,
-                        HeightRequest = 100,
-                        HorizontalOptions = LayoutOptions.Center,
-                    },
+        // Добавляем весь контент в pageStack
+        AddContent();
 
-                    label,
+        // Добавляем pageStack в прокручиваемую разметку
+        pageScroll.Content = pageStack;
 
-                    desc,
+        // В качестве контента страницы устанавливаем
+        // прокручиваемую разметку
+        Content = pageScroll;
 
-                    grid
+    }
 
-                }
-            }
-        };
-
+    /// <summary>
+    /// Функция добавления контента страницы в 
+    /// основной pageStack
+    /// </summary>
+    private void AddContent()
+    {
+        pageStack.Add(tikkurilaLogo);
+        pageStack.Add(label);
+        pageStack.Add(desc);
+        pageStack.Add(buttonsGrid);
     }
 }

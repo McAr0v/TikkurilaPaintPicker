@@ -1,20 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Paint.Enums
+﻿namespace TikkurilaPaintPicker.Paint.Enums
 {
+    /// <summary>
+    /// enum, хранящий информацию о том, где будет производиться окраска -
+    /// снаружи помещения или внутри
+    /// </summary>
     public enum PaintLocationEnum
     {
         Indoor,
         Outdoor
     }
 
+
+    /// <summary>
+    /// Класс, хранящий функции связанные с локацией окраски
+    /// </summary>
     public static class PaintLocation 
     {
 
+        /// <summary>
+        /// Функция проверки - содержит ли краска необходимую локацию
+        /// </summary>
+        /// <param name="paint"></param>
+        /// <param name="paintLocation"></param>
+        /// <returns></returns>
         public static bool CheckPaintLocation(PaintClass paint, PaintLocationEnum paintLocation)
         {
             foreach (PaintLocationEnum locationEnum in paint.Locations)
@@ -29,6 +37,11 @@ namespace TikkurilaPaintPicker.Paint.Enums
 
         }
 
+        /// <summary>
+        /// Функция получения названия локации на русском языке
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         public static string GetPaintLocationString(PaintLocationEnum location) 
         {
             switch (location) 

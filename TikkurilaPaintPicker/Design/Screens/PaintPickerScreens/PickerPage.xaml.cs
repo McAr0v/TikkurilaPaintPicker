@@ -49,6 +49,7 @@ public partial class PickerPage : ContentPage
         // Добавляем заголовок и описание экрана
         GenerateHeadlineAndDesc();
 
+        // Добавляем кнопки
         pageStack.Add(buttonsGrid);
 
         // Добавляем наш pageStack в ScrollView на случай, если 
@@ -62,11 +63,13 @@ public partial class PickerPage : ContentPage
         // В качестве контента ставим наш ScrollView
         Content = primaryScrollForPage;
 
-
-
-
     }
 
+    /// <summary>
+    /// Функция генерации заголовка и описания главной страницы 
+    /// PaintPicker'а, а так же автоматически добавляет заголовок и описание
+    /// в общий стак страницы
+    /// </summary>
     private void GenerateHeadlineAndDesc()
     {
         // Заголовок и описание страницы

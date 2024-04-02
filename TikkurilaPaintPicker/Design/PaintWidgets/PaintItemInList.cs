@@ -10,30 +10,25 @@ namespace TikkurilaPaintPicker.Design.PaintWidgets
     {
         public static Frame PaintItemWidgetInList(PaintClass paint, Func<Task> categoryAction, Func<Task> paintAction)
         {
-            Grid grid = new Grid
+            Grid imageAndTextGrid = new Grid
             {
                 ColumnSpacing = 10,
                 RowSpacing = 10,
             };
 
-            StackLayout stack = new StackLayout()
-            {
-                Spacing = 10
-            };
+            StackLayout textStack = new StackLayout(){Spacing = 10};
 
-            // Первая колонка, занимающая 1/3 ширины экрана
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            imageAndTextGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-            // Вторая колонка, занимающая оставшуюся часть ширины
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
+            imageAndTextGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
 
-            Image image = new Image
+            Image paintImage = new Image
             {
                 Source = $"Images/PaintImages/{paint.GenerateImageName()}.png",
                 Aspect = Aspect.AspectFill,
             };
 
-            Label label = CustomWidgets.CustomText(
+            Label paintName = CustomWidgets.CustomText(
                 text: paint.Name,
                 textColor: CustomColors.Black,
                 textState: TextState.HeadlineSmall,
@@ -47,8 +42,11 @@ namespace TikkurilaPaintPicker.Design.PaintWidgets
                 horizontalAligment: TextAlignment.Start
             );
 
+            paintDesc.LineBreakMode = LineBreakMode.WordWrap;
+            paintDesc.MaxLines = 2;
+
             Label paintCategory = CustomWidgets.CustomText(
-                text: CategoryTranslator.Translate(paint.Categories[0]),
+                text: CategoryClass.Translate(paint.Categories[0]),
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,
                 horizontalAligment: TextAlignment.Start,
@@ -72,31 +70,24 @@ namespace TikkurilaPaintPicker.Design.PaintWidgets
                 underline: TextDecorations.Underline
             );
 
-            paintDesc.LineBreakMode = LineBreakMode.WordWrap;
-            paintDesc.MaxLines = 2;
+            textStack.Children.Add(paintName);
+            textStack.Children.Add(paintDesc);
+            textStack.Children.Add(paintCategory);
+            textStack.Children.Add(textButton);
 
-            label.BindingContext = paint;
+            imageAndTextGrid.Add(paintImage, 0, 0);
+            imageAndTextGrid.Add(textStack, 1, 0);
 
-
-
-            stack.Children.Add(label);
-            stack.Children.Add(paintDesc);
-            stack.Children.Add(paintCategory);
-            stack.Children.Add(textButton);
-
-            grid.Add(image, 0, 0);
-            grid.Add(stack, 1, 0);
-
-            Frame frame = new Frame
+            Frame paintWidgetFrame = new Frame
             {
-                Content = grid,
+                Content = imageAndTextGrid,
                 HasShadow = true,
                 BackgroundColor = CustomColors.White,
                 Padding = new Thickness(20),
                 CornerRadius = 10
             };
 
-            frame.GestureRecognizers.Add(new TapGestureRecognizer
+            paintWidgetFrame.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(async () =>
                 {
@@ -104,7 +95,7 @@ namespace TikkurilaPaintPicker.Design.PaintWidgets
                 })
             });
 
-            return frame;
+            return paintWidgetFrame;
         }
 
     }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets
+﻿namespace TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets
 {
+    /// <summary>
+    /// enum для дизайна отображения виджета кнопки CustomButton
+    /// </summary>
     public enum ButtonState 
     {
         Primary,

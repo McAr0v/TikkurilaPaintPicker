@@ -1,5 +1,4 @@
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Widgets;
 using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 using TikkurilaPaintPicker.Paint;
@@ -14,8 +13,8 @@ public partial class PickerPage : ContentPage
     StackLayout pageStack = new StackLayout() { Spacing = 20, Padding = 20 };
     ScrollView primaryScrollForPage = new ScrollView();
 
-    Button nextButton = new Button() { BackgroundColor = CustomColors.TikkurilaRed, Text = "Начинаем >>", TextColor = CustomColors.White };
-    Button previousButton = new Button() { BackgroundColor = CustomColors.GreyLight, Text = "<< Вернуться назад", TextColor = CustomColors.Black };
+    Button nextButton = CustomWidgets.CustomButton(text: "Начинаем >>", buttonState: ButtonState.Primary);
+    Button previousButton = CustomWidgets.CustomButton(text: "<< Вернуться назад", buttonState: ButtonState.Secondary);
 
     Grid buttonsGrid = new Grid
     {

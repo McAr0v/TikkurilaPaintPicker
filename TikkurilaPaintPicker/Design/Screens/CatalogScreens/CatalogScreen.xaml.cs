@@ -1,5 +1,4 @@
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 using TikkurilaPaintPicker.Design.Widgets;
 using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;

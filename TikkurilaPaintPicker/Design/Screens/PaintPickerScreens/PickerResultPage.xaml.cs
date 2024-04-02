@@ -1,8 +1,5 @@
 
-using Microsoft.Maui;
-using Microsoft.Maui.Graphics;
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.PaintWidgets;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
@@ -20,27 +17,9 @@ public partial class PickerResultPage : ContentPage
     StackLayout paintsStack = new StackLayout() { Spacing = 20};
     ScrollView primaryScrollForPage = new ScrollView();
 
-    Button catalogButton = new Button() 
-    { 
-        BackgroundColor = CustomColors.GreyLight, 
-        Text = "Перейти в каталог красок >>",
-        TextColor = CustomColors.Black, 
-    };
-
-    Button backButton = new Button() 
-    {
-        BackgroundColor = CustomColors.GreyLight, 
-        Text = "<< Вернуться назад и изменить ответы", 
-        TextColor = CustomColors.Black 
-    };
-
-    Button mainPageButton = new Button() 
-    { 
-        BackgroundColor = CustomColors.TikkurilaRed,
-        Text = "<< Вернуться на главный экран", 
-        TextColor = CustomColors.White, 
-        Margin = new Thickness(0, 20, 0, 0) 
-    };
+    Button catalogButton = CustomWidgets.CustomButton("Перейти в каталог красок >>", ButtonState.Secondary);
+    Button backButton = CustomWidgets.CustomButton("<< Вернуться назад и изменить ответы", ButtonState.Secondary);
+    Button mainPageButton = CustomWidgets.CustomButton("<< Вернуться на главный экран", ButtonState.Primary);
 
     List<PaintClass> paintsResultList = new List<PaintClass>();
 
@@ -52,6 +31,7 @@ public partial class PickerResultPage : ContentPage
 
         backButton.Clicked += async (sender, args) => await Navigation.PopAsync();
         mainPageButton.Clicked += async (sender, args) => await Navigation.PopToRootAsync();
+        mainPageButton.Margin = new Thickness(0, 20, 0, 0);
         catalogButton.Clicked += async (sender, args) => await Navigation.PushAsync(new CatalogScreen());
 
         // Получаем список красок, удовлетворяющих условиям ответов из пикера

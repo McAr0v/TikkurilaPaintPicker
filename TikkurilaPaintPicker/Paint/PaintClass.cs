@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers;
 using TikkurilaPaintPicker.Design.Widgets;
 using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;

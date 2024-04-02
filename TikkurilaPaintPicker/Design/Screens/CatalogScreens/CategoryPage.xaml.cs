@@ -1,7 +1,6 @@
 using Microsoft.Maui.Graphics;
 using System.Data.Common;
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.PaintWidgets;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
 using TikkurilaPaintPicker.Design.Widgets;

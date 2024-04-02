@@ -1,6 +1,5 @@
 using Microsoft.Maui.Graphics;
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens;
 using TikkurilaPaintPicker.Design.Widgets;
@@ -11,24 +10,16 @@ namespace TikkurilaPaintPicker.Design.Screens;
 public partial class MainScreen : ContentPage
 {
 
-    Button catalogButton = new Button();
-    Button pickerButton = new Button();
+    Button catalogButton = CustomWidgets.CustomButton(text: "Перейти в каталог", ButtonState.Secondary);
+    Button pickerButton = CustomWidgets.CustomButton(text: "Подборщик красок", ButtonState.Primary);
 
-    Label label;
-    Label desc;
-
-	public MainScreen()
-	{
-		InitializeComponent();
-
-        label = CustomWidgets.CustomText(
-            text: "Добро пожаловать в приложение Tikkurila!", 
-            textColor: CustomColors.Black, 
+    Label label = CustomWidgets.CustomText(
+            text: "Добро пожаловать в приложение Tikkurila!",
+            textColor: CustomColors.Black,
             textState: TextState.HeadlineMedium,
             horizontalAligment: TextAlignment.Center
             );
-
-        desc = CustomWidgets.CustomText(
+    Label desc = CustomWidgets.CustomText(
             text: "Мы рады видеть Вас в нашем приложении! " +
                     "В нем вы можете ознакомиться с нашими красками. " +
                     "\r\n\r\nВоспользуйтесь подборщиком красок или каталогом, чтобы найти подходящую краску для ремонта!",
@@ -37,11 +28,13 @@ public partial class MainScreen : ContentPage
             horizontalAligment: TextAlignment.Center
             );
 
-        catalogButton.Text = "Перейти в каталог";
-        catalogButton.Clicked += async (sender, args) => await NavigateToCatalogPage();
+	public MainScreen()
+	{
+		InitializeComponent();
 
-        pickerButton.Text = "Подборщик красок";
-        pickerButton.Clicked += async (sender, args) => await NavigateToPickerPage();
+        catalogButton.Clicked += async (sender, args) => await Navigation.PushAsync(new CatalogScreen());
+
+        pickerButton.Clicked += async (sender, args) => await Navigation.PushAsync(new PickerPage());
 
         Grid grid = new Grid
         {
@@ -57,7 +50,7 @@ public partial class MainScreen : ContentPage
         Content = new ScrollView
         {
            
-            VerticalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.Start,
             HorizontalOptions = LayoutOptions.Center,
             Content = new StackLayout
             {
@@ -83,20 +76,6 @@ public partial class MainScreen : ContentPage
                 }
             }
         };
-
-    }
-
-    private async Task NavigateToCatalogPage()
-    {
-
-        await Navigation.PushAsync(new CatalogScreen());
-
-    }
-
-    private async Task NavigateToPickerPage()
-    {
-
-        await Navigation.PushAsync(new PickerPage());
 
     }
 }

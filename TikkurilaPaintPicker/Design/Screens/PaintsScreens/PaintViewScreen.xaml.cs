@@ -1,5 +1,4 @@
 using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
 using TikkurilaPaintPicker.Design.Widgets;
 using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
@@ -71,7 +70,7 @@ public partial class PaintViewScreen : ContentPage
 
         whatsappButton.Text = "ќформить заказ через Whatsapp";
 
-        button.Clicked += async (sender, args) => await NavigateToSecondPage();
+        button.Clicked += async (sender, args) => await NavigateToMainPage();
 
         Title = paint.Name;
 
@@ -171,7 +170,7 @@ public partial class PaintViewScreen : ContentPage
         calcFrame.Content = calcStack;
     }
 
-    private async Task NavigateToSecondPage()
+    private async Task NavigateToMainPage()
     {
         await Navigation.PopToRootAsync();
 

@@ -19,7 +19,7 @@ public partial class MainScreen : ContentPage
     };
 
     // Кнопки
-    Button catalogButton = CustomWidgets.CustomButton(text: "Перейти в каталог", ButtonState.Secondary);
+    Button catalogButton = CustomWidgets.CustomButton(text: "Каталог красок", ButtonState.Secondary);
     Button pickerButton = CustomWidgets.CustomButton(text: "Подборщик красок", ButtonState.Primary);
 
     Label label = CustomWidgets.CustomText(
@@ -46,6 +46,14 @@ public partial class MainScreen : ContentPage
         HorizontalOptions = LayoutOptions.Center,
     };
 
+    Image tikkurilaImage = new Image
+    {
+        Source = $"Images/tikkurila_paints.png",
+        Aspect = Aspect.AspectFit,
+        HorizontalOptions = LayoutOptions.Center,
+        Margin = new Thickness(0, 20),
+    };
+
     // Разметка для расположения кнопок в 2 колонки
 
     Grid buttonsGrid = new Grid
@@ -68,6 +76,8 @@ public partial class MainScreen : ContentPage
 
         Title = "";
 
+        
+
         // Добавляем весь контент в pageStack
         AddContent();
 
@@ -88,6 +98,7 @@ public partial class MainScreen : ContentPage
     {
         pageStack.Add(tikkurilaLogo);
         pageStack.Add(label);
+        pageStack.Add(tikkurilaImage);
         pageStack.Add(desc);
         pageStack.Add(buttonsGrid);
     }

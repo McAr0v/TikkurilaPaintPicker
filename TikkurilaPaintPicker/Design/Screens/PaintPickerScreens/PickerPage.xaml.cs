@@ -22,6 +22,8 @@ public partial class PickerPage : ContentPage
         Margin = new Thickness(0, 20),
     };
 
+    
+
     public PickerPage()
 	{
 		InitializeComponent();
@@ -91,7 +93,16 @@ public partial class PickerPage : ContentPage
             horizontalAligment: TextAlignment.Center
             );
 
+        Image tikkurilaImage = new Image
+        {
+            Source = $"Images/paint_picker.png",
+            Aspect = Aspect.AspectFit,
+            HorizontalOptions = LayoutOptions.Center,
+            Margin = new Thickness(0, 20),
+        };
+
         pageStack.Add(pageHeadline);
+        pageStack.Add(tikkurilaImage);
         pageStack.Add(pageDesc);
     }
 }

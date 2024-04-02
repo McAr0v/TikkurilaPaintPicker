@@ -1,6 +1,9 @@
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
+using TikkurilaPaintPicker.Design.PaintWidgets;
 using TikkurilaPaintPicker.Design.Screens.PaintPickerScreens.PaintLayers;
+using TikkurilaPaintPicker.Design.Widgets;
+using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 using TikkurilaPaintPicker.Paint;
 using TikkurilaPaintPicker.Paint.Enums;
 
@@ -8,23 +11,31 @@ namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens;
 
 public partial class LayerPages: ContentPage
 {
-    // Изначальная переменная, которую будем постепенно заполнять
-    // и передавать между экранами
+    // Изначальная переменная краски, которую будем постепенно заполнять
+    // и рекурсивно передавать между экранами
     
     PaintClass paint;
 
-    // Стаки для самой страницы и для элементов виджета с вопросами
-
+    // Стак для всего контента страницы
     StackLayout pageStack = new StackLayout() { Spacing = 20, Padding = new Thickness(20, 10) };
+
+    // Прокручиваемая разметка, на случай, если содержимое не будет влазить в размеры экрана
     ScrollView primaryScrollForPage = new ScrollView();
     
 
     // Кнопки
+    Button nextButton = CustomWidgets.CustomButton
+        (
+            text: "Следующий шаг >>", 
+            buttonState: ButtonState.Primary
+        );
+    Button previousButton = CustomWidgets.CustomButton
+        (
+            text: "<< Вернуться назад", 
+            buttonState: ButtonState.Secondary
+        );
 
-    Button nextButton = new Button() { BackgroundColor = CustomColors.TikkurilaRed, Text = "Следующий шаг >>", TextColor = CustomColors.White };
-    Button previousButton = new Button() { BackgroundColor = CustomColors.GreyLight, Text = "<< Вернуться назад", TextColor = CustomColors.Black };
-
-    // Контейнер для размещения кнопок на одной плоскости
+    // Контейнер для размещения кнопок в 2 колонки
 
     Grid buttonsGrid = new Grid
     {
@@ -66,6 +77,7 @@ public partial class LayerPages: ContentPage
         buttonsGrid.Add(nextButton, 1, 0);
 
         // ----- РАДИО-КНОПКИ ----
+
         GenerateAnswersWidget(layer);
         
 
@@ -87,7 +99,7 @@ public partial class LayerPages: ContentPage
         // Устанавливаем заголовок страницы
         Title = PaintLayer.GetPageHeadline(layer);
 
-        // В качестве контента ставим наш ScrollView
+        // В качестве контента страницы ставим наш ScrollView
         Content = primaryScrollForPage;
 
 	}
@@ -127,7 +139,7 @@ public partial class LayerPages: ContentPage
     {
         StackLayout answersStack = new StackLayout() { Spacing = 5 };
 
-        Label answerHeadline = CustomTextWidget.CustomText
+        Label answerHeadline = CustomWidgets.CustomText
         (
             text: PaintLayer.GetHeadline(layer),
             textColor: CustomColors.Black,
@@ -155,10 +167,12 @@ public partial class LayerPages: ContentPage
 
         // Списки, которые не надо генерировать
 
-        List<PaintLocationEnum> enumsList = new List<PaintLocationEnum>() { PaintLocationEnum.Indoor, PaintLocationEnum.Outdoor };
+        List<PaintLocationEnum> paintLocationList = new List<PaintLocationEnum>() { PaintLocationEnum.Indoor, PaintLocationEnum.Outdoor };
         List<PaintGlossEnum> paintGlossList = new List<PaintGlossEnum> { PaintGlossEnum.Matt, PaintGlossEnum.Gloss };
         List<PaintThinnerEnum> paintThinnerList = new List<PaintThinnerEnum> { PaintThinnerEnum.Water, PaintThinnerEnum.Solvent1050 };
         List<PaintColorEnum> paintColorsList = new List<PaintColorEnum> { PaintColorEnum.DarkShades, PaintColorEnum.LightShades, PaintColorEnum.White };
+
+        // ---- ГЕНЕРИРУЕМ СПИСКИ ОТВЕТОВ ----
 
         if (layer == PaintLayerEnum.MaterialEnum) 
         {
@@ -169,197 +183,168 @@ public partial class LayerPages: ContentPage
             paintObjectList = PaintObject.GetPaintObjectList(paintMaterial: paint.Materials[0], paintLocation: paint.Locations[0]);
         }
 
+        // Если выбрали в качестве материала окраски дерево, то нужно добавить в цвета
+        // полупрозрачный цвет лаков и пропиток
+
         if (paint.Materials.Count > 0 && (paint.Materials[0] == PaintMaterialEnum.Wood || paint.Materials[0] == PaintMaterialEnum.Osb))
         {
             paintColorsList.Add(PaintColorEnum.NoColor);
         }
 
-        StackLayout layout = new StackLayout();
+        StackLayout radioButtonsLayout = new StackLayout();
 
+        // ---- ГЕНЕРИРУЕМ ОТВЕТЫ -----
+
+        // В зависимости от вопроса (PaintLayer) генерируем ответы,
+        // программируем действие на нажатие элемента,
+        // и добавляем в стак ответов
+
+        // "Круг" вопроса о локации окраски 
         if (layer == PaintLayerEnum.LocationEnum) 
         {
-            foreach (PaintLocationEnum location in enumsList)
+            foreach (PaintLocationEnum location in paintLocationList)
             {
 
-                RadioButton radioButton = new RadioButton
-                {
-                    TextColor = CustomColors.Black,
-                    Content = PaintLocation.GetPaintLocationString(location),
-                    IsChecked = false,
-                    BorderColor = CustomColors.Black,
-                    Margin = 0,
-                    Padding = 0
-                };
+                RadioButton radioButton = CustomWidgets.CustomRadioButton(text: PaintLocation.GetPaintLocationString(location));
 
                 radioButton.CheckedChanged += (sender, e) =>
                 {
-                    if (e.Value) // Если радиокнопка выбрана
+                    if (e.Value) 
                     {
                         paint.Locations = new List<PaintLocationEnum> { location };
                     }
                 };
 
-                layout.Children.Add(radioButton);
+                radioButtonsLayout.Children.Add(radioButton);
             }
         }
+        // "Круг" вопроса об объекте окраски 
         else if (layer == PaintLayerEnum.ObjectEnum)
         {
             foreach (PaintObjectEnum paintObject in paintObjectList)
             {
-
-                RadioButton radioButton = new RadioButton
-                {
-                    TextColor = CustomColors.Black,
-                    Content = PaintObject.GetPaintObjectName(paintObject),
-                    IsChecked = false,
-                    BorderColor = CustomColors.Black,
-                    Margin = 0,
-                    Padding = 0
-                };
+                RadioButton radioButton = CustomWidgets.CustomRadioButton(text: PaintObject.GetPaintObjectName(paintObject));
 
                 radioButton.CheckedChanged += (sender, e) =>
                 {
-                    if (e.Value) // Если радиокнопка выбрана
+                    if (e.Value) 
                     {
                         paint.Objects = new List<PaintObjectEnum> { paintObject };
                     }
                 };
 
-                layout.Children.Add(radioButton);
+                radioButtonsLayout.Children.Add(radioButton);
             }
         }
-
+        // "Круг" вопроса об окрашиваемом материале 
         else if (layer == PaintLayerEnum.MaterialEnum)
         {
             foreach (PaintMaterialEnum paintMaterial in paintMaterialList)
             {
-
-                RadioButton radioButton = new RadioButton
-                {
-                    TextColor = CustomColors.Black,
-                    Content = PaintMaterial.GetPaintMaterialName(paintMaterial),
-                    IsChecked = false,
-                    BorderColor = CustomColors.Black,
-                    Margin = 0,
-                    Padding = 0
-                };
+                RadioButton radioButton = CustomWidgets.CustomRadioButton(text: PaintMaterial.GetPaintMaterialName(paintMaterial));
 
                 radioButton.CheckedChanged += (sender, e) =>
                 {
-                    if (e.Value) // Если радиокнопка выбрана
+                    if (e.Value) 
                     {
                         paint.Materials = new List<PaintMaterialEnum> { paintMaterial };
                     }
                 };
 
-                layout.Children.Add(radioButton);
+                radioButtonsLayout.Children.Add(radioButton);
             }
         }
-
+        // "Круг" вопроса о желаемом цвете краски 
         else if (layer == PaintLayerEnum.ColorsEnum)
         {
             foreach (PaintColorEnum paintColor in paintColorsList)
             {
-
-                RadioButton radioButton = new RadioButton
-                {
-                    TextColor = CustomColors.Black,
-                    Content = PaintColor.GetPaintColorAnswer(paintColor),
-                    IsChecked = false,
-                    BorderColor = CustomColors.Black,
-                    Margin = 0,
-                    Padding = 0
-                };
+                RadioButton radioButton = CustomWidgets.CustomRadioButton(text: PaintColor.GetPaintColorAnswer(paintColor));
 
                 radioButton.CheckedChanged += (sender, e) =>
                 {
-                    if (e.Value) // Если радиокнопка выбрана
+                    if (e.Value) 
                     {
                         paint.Colors = new List<PaintColorEnum> { paintColor };
                     }
                 };
 
-                layout.Children.Add(radioButton);
+                radioButtonsLayout.Children.Add(radioButton);
             }
         }
-
+        // "Круг" вопроса о желаемом блеске материала
         else if (layer == PaintLayerEnum.GlossEnum)
         {
             foreach (PaintGlossEnum paintGloss in paintGlossList)
             {
-
-                RadioButton radioButton = new RadioButton
-                {
-                    TextColor = CustomColors.Black,
-                    Content = PaintGloss.GetGlossName(paintGloss),
-                    IsChecked = false,
-                    BorderColor = CustomColors.Black,
-                    Margin = 0,
-                    Padding = 0
-                };
+                RadioButton radioButton = CustomWidgets.CustomRadioButton(text: PaintGloss.GetGlossName(paintGloss));
 
                 radioButton.CheckedChanged += (sender, e) =>
                 {
-                    if (e.Value) // Если радиокнопка выбрана
+                    if (e.Value) 
                     {
                         paint.Gloss = new List<PaintGlossEnum> { paintGloss };
                     }
                 };
 
-                layout.Children.Add(radioButton);
+                radioButtonsLayout.Children.Add(radioButton);
             }
         }
-
+        // "Круг" вопроса о предпочтении заказчика о краске на водной основе 
         else if (layer == PaintLayerEnum.WaterbornEnum)
         {
             foreach (PaintThinnerEnum thinner in paintThinnerList)
             {
-
-                RadioButton radioButton = new RadioButton
-                {
-                    TextColor = CustomColors.Black,
-                    Content = thinner == PaintThinnerEnum.Solvent1050 ? "Можно на растворителях" : "Да, краска должна быть без запаха",
-                    IsChecked = false,
-                    BorderColor = CustomColors.Black,
-                    Margin = 0,
-                    Padding = 0
-                };
-
+                RadioButton radioButton = CustomWidgets.CustomRadioButton
+                    (
+                        text: thinner == PaintThinnerEnum.Solvent1050 ? 
+                        "Можно на растворителях" 
+                        : "Да, краска должна быть без запаха"
+                    );
+                
                 radioButton.CheckedChanged += (sender, e) =>
                 {
-                    if (e.Value) // Если радиокнопка выбрана
+                    if (e.Value)
                     {
                         paint.Thinner = thinner;
                     }
                 };
 
-                layout.Children.Add(radioButton);
+                radioButtonsLayout.Children.Add(radioButton);
             }
         }
 
-
-        return layout;
+        return radioButtonsLayout;
     }
 
     private async Task GoToNextScreen(PaintClass paint, PaintLayerEnum layer) 
     {
+        // Если человек ответил на вопрос
 
         if (PaintLayer.CheckAnswer(layer: layer, paint: paint))
         {
+            // Если это не последний вопрос
             if (layer != PaintLayerEnum.WaterbornEnum) 
             {
+                // Рекурсивно переходим на эту же страницу вопросов,
+                // но уже со следующим вопросом
+
                 await Navigation.PushAsync(new LayerPages(paint, PaintLayer.GetNextPage(layer)));
             }
+            // Если вопрос последний
             else
-            {
-                //PickerResultPage
+            { 
+                // Переходим на страницу результатов
 
                 await Navigation.PushAsync(new PickerResultPage(paint));
             }
 
         }
+        // Если человек не ответил на вопрос
         else
         {
+            // Выводим сообщение
+
             await DisplayAlert("Переход невозможен!", "Вы не ответили на вопрос!", "Ок, сейчас отвечу");
         }
     }

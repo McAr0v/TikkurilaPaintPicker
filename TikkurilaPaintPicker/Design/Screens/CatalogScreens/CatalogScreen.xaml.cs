@@ -1,6 +1,8 @@
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.PaintsScreens;
+using TikkurilaPaintPicker.Design.Widgets;
+using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 using TikkurilaPaintPicker.Paint.Enums;
 
 namespace TikkurilaPaintPicker.Design.Screens.CatalogScreens;
@@ -97,7 +99,7 @@ public partial class CatalogScreen : ContentPage
 
         itemsAfterHeadline.Spacing = 5;
 
-        Label headline = CustomTextWidget.CustomText(
+        Label headline = CustomWidgets.CustomText(
             text: CategoryTranslator.Translate(headlineEnum),
             textColor: CustomColors.Black,
             textState: TextState.HeadlineSmall,
@@ -116,7 +118,7 @@ public partial class CatalogScreen : ContentPage
             })
         });
 
-        Label desc = CustomTextWidget.CustomText(
+        Label desc = CustomWidgets.CustomText(
             text: CategoryTranslator.GetDescription(headlineEnum),
             textColor: CustomColors.Black,
             textState: TextState.DescMedium,
@@ -151,7 +153,7 @@ public partial class CatalogScreen : ContentPage
 
         foreach (CategoryEnums item in itemsNames) 
         {
-            Label headline = CustomTextWidget.CustomText(
+            Label headline = CustomWidgets.CustomText(
             text: CategoryTranslator.Translate(item),
             textColor: CustomColors.Black,
             textState: TextState.BodySmall,
@@ -180,7 +182,7 @@ public partial class CatalogScreen : ContentPage
     private void AddToGrid(int column, int row, string image, string text, ContentPage page) 
     {      
 
-        Label label = CustomTextWidget.CustomText(
+        Label label = CustomWidgets.CustomText(
             text: text,
             textColor: CustomColors.White,
             textState: TextState.BodySmall,

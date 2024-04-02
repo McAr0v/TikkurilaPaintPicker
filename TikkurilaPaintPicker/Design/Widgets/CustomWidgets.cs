@@ -3,21 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TikkurilaPaintPicker.Design.Colors;
+using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 
-namespace TikkurilaPaintPicker.Design.Font
+namespace TikkurilaPaintPicker.Design.Widgets
 {
-    public static class CustomTextWidget
+    public static class CustomWidgets
     {
+        public static Button CustomButton(string text, ButtonState buttonState)
+        {
+            return new Button() 
+            { 
+                BackgroundColor = SwitchButtonColor(buttonState), 
+                Text = text, 
+                TextColor = SwitchButtonTextColor(buttonState)
+            };
+        }
+
         public static Label CustomText(
-            string text, 
-            Color textColor, 
+            string text,
+            Color textColor,
             TextState textState,
             TextDecorations underline = TextDecorations.None,
             TextAlignment horizontalAligment = TextAlignment.Start,
             Thickness padding = new Thickness()
-            ) 
+            )
         {
-            return new Label 
+            return new Label
             {
                 Text = text,
                 TextColor = textColor,
@@ -66,6 +78,39 @@ namespace TikkurilaPaintPicker.Design.Font
                     return 10;
                 default:
                     return 16; // Значение по умолчанию
+            }
+        }
+
+        public static RadioButton CustomRadioButton(string text)
+        {
+            return new RadioButton
+            {
+                TextColor = CustomColors.Black,
+                Content = text,
+                IsChecked = false,
+                BorderColor = CustomColors.Black,
+                Margin = 0,
+                Padding = 0
+            };
+        }
+
+        private static Color SwitchButtonColor(ButtonState buttonState)
+        {
+            switch (buttonState) 
+            {
+                case ButtonState.Primary: return CustomColors.TikkurilaRed;
+                case ButtonState.Secondary: return CustomColors.GreyLight;
+                default: return CustomColors.TikkurilaRed;
+            }
+        }
+
+        private static Color SwitchButtonTextColor(ButtonState buttonState)
+        {
+            switch (buttonState)
+            {
+                case ButtonState.Primary: return CustomColors.White;
+                case ButtonState.Secondary: return CustomColors.Black;
+                default: return CustomColors.White;
             }
         }
     }

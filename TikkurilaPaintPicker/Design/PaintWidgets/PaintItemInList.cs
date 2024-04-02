@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TikkurilaPaintPicker.Design.Colors;
-using TikkurilaPaintPicker.Design.Font;
+﻿using TikkurilaPaintPicker.Design.Colors;
+using TikkurilaPaintPicker.Design.Widgets;
+using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 using TikkurilaPaintPicker.Paint;
 using TikkurilaPaintPicker.Paint.Enums;
 
@@ -37,21 +33,21 @@ namespace TikkurilaPaintPicker.Design.PaintWidgets
                 Aspect = Aspect.AspectFill,
             };
 
-            Label label = CustomTextWidget.CustomText(
+            Label label = CustomWidgets.CustomText(
                 text: paint.Name,
                 textColor: CustomColors.Black,
                 textState: TextState.HeadlineSmall,
                 horizontalAligment: TextAlignment.Start
             );
 
-            Label paintDesc = CustomTextWidget.CustomText(
+            Label paintDesc = CustomWidgets.CustomText(
                 text: paint.Description,
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,
                 horizontalAligment: TextAlignment.Start
             );
 
-            Label paintCategory = CustomTextWidget.CustomText(
+            Label paintCategory = CustomWidgets.CustomText(
                 text: CategoryTranslator.Translate(paint.Categories[0]),
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,
@@ -68,7 +64,7 @@ namespace TikkurilaPaintPicker.Design.PaintWidgets
                 })
             });
 
-            Label textButton = CustomTextWidget.CustomText(
+            Label textButton = CustomWidgets.CustomText(
                 text: "Подробнее",
                 textColor: CustomColors.TikkurilaRed,
                 textState: TextState.DescMedium,

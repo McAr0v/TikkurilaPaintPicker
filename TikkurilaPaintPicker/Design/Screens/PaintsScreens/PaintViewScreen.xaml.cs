@@ -1,6 +1,8 @@
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
 using TikkurilaPaintPicker.Design.Screens.CatalogScreens;
+using TikkurilaPaintPicker.Design.Widgets;
+using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 using TikkurilaPaintPicker.Paint;
 using TikkurilaPaintPicker.Paint.Enums;
 
@@ -48,7 +50,7 @@ public partial class PaintViewScreen : ContentPage
         BackgroundColor = CustomColors.TikkurilaRed
     };
 
-    Label countOfPaint = CustomTextWidget.CustomText
+    Label countOfPaint = CustomWidgets.CustomText
             (
                 text: "Результат:",
                 textColor: CustomColors.Black,
@@ -83,7 +85,7 @@ public partial class PaintViewScreen : ContentPage
             {
                 new Image
                 {
-                    Source = $"Images/PaintImages/{paint.GenerateImageName()}.png",
+                    Source = $"Images/PaintImages/{paint.Name}.png",
                     Aspect = Aspect.AspectFit,
                     HeightRequest = 300,
                 },
@@ -141,7 +143,7 @@ public partial class PaintViewScreen : ContentPage
         StackLayout headlineDesc = new StackLayout() { Spacing = 5 };
 
         headlineDesc.Add(
-            CustomTextWidget.CustomText(
+            CustomWidgets.CustomText(
                 text: "Калькулятор расхода",
                 textColor: CustomColors.Black,
                 textState: TextState.HeadlineMedium,
@@ -150,7 +152,7 @@ public partial class PaintViewScreen : ContentPage
             );
 
         headlineDesc.Add(
-            CustomTextWidget.CustomText(
+            CustomWidgets.CustomText(
                 text: "Введите вашу площадь поверхности и нажмите кнопку 'Рассчитать'. ",
                 textColor: CustomColors.Black,
                 textState: TextState.DescMedium,

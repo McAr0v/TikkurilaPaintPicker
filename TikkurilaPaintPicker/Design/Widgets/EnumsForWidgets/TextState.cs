@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TikkurilaPaintPicker.Design.Font
+namespace TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets
 {
     public enum TextState
     {

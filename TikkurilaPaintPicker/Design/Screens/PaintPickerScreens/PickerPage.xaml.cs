@@ -1,5 +1,7 @@
 using TikkurilaPaintPicker.Design.Colors;
 using TikkurilaPaintPicker.Design.Font;
+using TikkurilaPaintPicker.Design.Widgets;
+using TikkurilaPaintPicker.Design.Widgets.EnumsForWidgets;
 using TikkurilaPaintPicker.Paint;
 
 namespace TikkurilaPaintPicker.Design.Screens.PaintPickerScreens;
@@ -70,7 +72,7 @@ public partial class PickerPage : ContentPage
     {
         // Заголовок и описание страницы
 
-        Label pageHeadline = CustomTextWidget.CustomText
+        Label pageHeadline = CustomWidgets.CustomText
             (
             text: "Подборщик красок",
             textColor: CustomColors.Black,
@@ -78,7 +80,7 @@ public partial class PickerPage : ContentPage
             horizontalAligment: TextAlignment.Center
             );
 
-        Label pageDesc = CustomTextWidget.CustomText
+        Label pageDesc = CustomWidgets.CustomText
             (
             text: "В этом разделе вы сможете самостоятельно подобрать краску, просто отвечая по порядку на простые вопросы" +
             "\r\n\r\n Давайте приступим к делу и ответим на первый вопрос!",

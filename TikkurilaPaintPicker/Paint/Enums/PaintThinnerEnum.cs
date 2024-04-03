@@ -9,7 +9,8 @@
         NotChosen,
         Water,
         Solvent1031,
-        Solvent1050
+        Solvent1050,
+        Solvent1120
     }
 
     /// <summary>
@@ -56,6 +57,7 @@
                 case PaintThinnerEnum.Water: return "Вода";
                 case PaintThinnerEnum.Solvent1031: return "Растворитель 1031";
                 case PaintThinnerEnum.Solvent1050: return "Растворитель 1050";
+                case PaintThinnerEnum.Solvent1120: return "Растворитель 1120";
                 default: return "Нет такого растворителя";
             }
         }

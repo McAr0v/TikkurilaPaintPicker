@@ -9,7 +9,8 @@
         LightShades,
         DarkShades,
         White,
-        NoColor
+        NoColor,
+        Transparent
     }
 
     /// <summary>
@@ -52,6 +53,7 @@
                 case PaintColorEnum.DarkShades: return "Колеровка в темные оттенки";
                 case PaintColorEnum.White: return "Белый";
                 case PaintColorEnum.NoColor: return "Прозрачный цвет или колеровка в полупрозрачный древесный оттенок";
+                case PaintColorEnum.Transparent: return "Прозрачный";
                 default: return "Цвет не найден";
             }
         }

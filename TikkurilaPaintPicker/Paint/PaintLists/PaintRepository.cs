@@ -27,10 +27,22 @@ namespace TikkurilaPaintPicker.Paint.PaintLists
             // Создаем экземпляры классов с красками
             WaterEmulsionPaints waterEmulsionPaints = new WaterEmulsionPaints();
             MetalPaints metalPaints = new MetalPaints();
+            FassadePaints fassadePaints = new FassadePaints();
+            WoodOils woodOils = new WoodOils();
+            Varnishes varnishes = new Varnishes();
+            Primers primers = new Primers();
+            Solvents solvents = new Solvents();
+            CleaningAgents cleaningAgents = new CleaningAgents();
 
             // Добавляем краски из разных классов в общий список
             AddPaints(waterEmulsionPaints.WaterEmulsionPaintList);
             AddPaints(metalPaints.MetalPaintList);
+            AddPaints(fassadePaints.FassadePaintsList);
+            AddPaints(woodOils.WoodOilsList);
+            AddPaints(varnishes.VarnishesList);
+            AddPaints(primers.PrimersList);
+            AddPaints(solvents.SolventsList);
+            AddPaints(cleaningAgents.CleaningAgentsList);
         }
 
         /// <summary>

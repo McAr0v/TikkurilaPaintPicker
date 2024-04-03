@@ -8,10 +8,10 @@
         FacadePaints,
         FacadePaintsForWood,
         FacadePaintsForMineralSurfaces,
-        WoodPreservatives,
-        SaunaPreservatives,
-        WoodFacadePreservatives,
-        InteriorWoodPreservatives,
+        WoodOils,
+        SaunaOils,
+        WoodFacadeOils,
+        InteriorWoodOils,
         Varnishes,
         VarnishesForWallsAndCeilings,
         VarnishesForFurniture,
@@ -56,13 +56,13 @@
                     return "Фасадные краски для дерева";
                 case CategoryEnums.FacadePaintsForMineralSurfaces:
                     return "Фасадные краски для минеральных поверхностей";
-                case CategoryEnums.WoodPreservatives:
+                case CategoryEnums.WoodOils:
                     return "Пропитки для дерева";
-                case CategoryEnums.SaunaPreservatives:
+                case CategoryEnums.SaunaOils:
                     return "Пропитки для сауны";
-                case CategoryEnums.WoodFacadePreservatives:
+                case CategoryEnums.WoodFacadeOils:
                     return "Пропитки для деревянных фасадов";
-                case CategoryEnums.InteriorWoodPreservatives:
+                case CategoryEnums.InteriorWoodOils:
                     return "Пропитки для внутренних работ";
                 case CategoryEnums.Varnishes:
                     return "Лаки";
@@ -128,13 +128,13 @@
                     return "Эти краски специально разработаны для окраски деревянных поверхностей на фасадах зданий.";
                 case CategoryEnums.FacadePaintsForMineralSurfaces:
                     return "Эти краски предназначены для окраски минеральных поверхностей на фасадах зданий.";
-                case CategoryEnums.WoodPreservatives:
+                case CategoryEnums.WoodOils:
                     return "Пропитки для дерева обеспечивают защиту от влаги, гниения и насекомых.";
-                case CategoryEnums.SaunaPreservatives:
+                case CategoryEnums.SaunaOils:
                     return "Пропитки для сауны используются для защиты деревянных поверхностей в сауне от воздействия высокой влажности и температуры.";
-                case CategoryEnums.WoodFacadePreservatives:
+                case CategoryEnums.WoodFacadeOils:
                     return "Пропитки для деревянных фасадов обеспечивают защиту и долговечность деревянных элементов фасада.";
-                case CategoryEnums.InteriorWoodPreservatives:
+                case CategoryEnums.InteriorWoodOils:
                     return "Пропитки для внутренних работ применяются для защиты и укрепления древесины внутри помещений.";
                 case CategoryEnums.Varnishes:
                     return "Лаки используются для создания защитного и декоративного покрытия на различных поверхностях.";
@@ -201,12 +201,12 @@
                         CategoryEnums.FacadePaintsForMineralSurfaces
                     };
                 
-                case CategoryEnums.WoodPreservatives:
+                case CategoryEnums.WoodOils:
                     return new List<CategoryEnums>
                     {
-                        CategoryEnums.SaunaPreservatives,
-                        CategoryEnums.WoodFacadePreservatives,
-                        CategoryEnums.InteriorWoodPreservatives,
+                        CategoryEnums.SaunaOils,
+                        CategoryEnums.WoodFacadeOils,
+                        CategoryEnums.InteriorWoodOils,
                     };
                
                 case CategoryEnums.Varnishes:

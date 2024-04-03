@@ -19,7 +19,7 @@ public partial class CatalogScreen : ContentPage
     { 
         CategoryEnums.WaterbornePaints,
         CategoryEnums.FacadePaints,
-        CategoryEnums.WoodPreservatives,
+        CategoryEnums.WoodOils,
         CategoryEnums.Varnishes,
         CategoryEnums.Enamels,
         CategoryEnums.Primers,

@@ -141,26 +141,6 @@ public partial class PaintViewScreen : ContentPage
     }
 
     /// <summary>
-    /// Функция отправки сообщения в ватсап с текстом
-    /// </summary>
-    /// <param name="paintName"></param>
-    /// <returns></returns>
-    private async Task SendWhatsapp(string paintName)
-    {
-
-        string uri = $"https://wa.me/77018039220?text=Здравствуйте,%20интересует%20ваша%20краска%20{paintName}";
-
-        bool supportsUri = await Launcher.Default.CanOpenAsync(uri);
-        if (supportsUri)
-            await Launcher.Default.OpenAsync(uri);
-
-        else
-            await DisplayAlert("Ошибка", "Не установлено приложение Whatsapp", "OK");
-
-    }
-
-
-    /// <summary>
     /// Функция генерации содержимого калькулятора
     /// </summary>
     private void GenerateCalc() 

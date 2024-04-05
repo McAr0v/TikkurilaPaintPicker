@@ -49,7 +49,6 @@ public partial class PaintViewScreen : ContentPage
     // Кнопки
 
     Button buttonToMainPage = CustomWidgets.CustomButton("Вернуться на главный экран", ButtonState.Primary);
-    Button whatsappButton = CustomWidgets.CustomButton("Оформить заказ через Whatsapp", ButtonState.Primary);
     Button calcButton = CustomWidgets.CustomButton("Рассчитать количество краски", ButtonState.Primary);
 
     // Стак для калькулятора
@@ -80,7 +79,6 @@ public partial class PaintViewScreen : ContentPage
 		InitializeComponent();
 
         calcButton.Clicked += async (sender, args) => await GetPaintCountAsync(paint);
-        whatsappButton.Clicked += async (sender, args) => await SendWhatsapp(paint.Name);
         buttonToMainPage.Clicked += async (sender, args) => await Navigation.PopToRootAsync();
 
         // Генерируем калькулятор
@@ -132,7 +130,6 @@ public partial class PaintViewScreen : ContentPage
 
         pageStack.Add(image);
         pageStack.Add(paintName);
-        pageStack.Add(whatsappButton);
         pageStack.Add(paintDesc);
         pageStack.Add(calcFrame);
 
